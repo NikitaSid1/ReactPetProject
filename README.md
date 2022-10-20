@@ -21,7 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 Start with cloning this repo on your local machine:
 
 ```sh
-$ git clone https://github.com/ORG/PROJECT.git
+$ git clone https://github.com/NikitaSid1/ReactPetProject.git
 ```
 
 ## `Usage`
