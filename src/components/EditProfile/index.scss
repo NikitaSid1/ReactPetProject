@@ -1,0 +1,61 @@
+.editProfile-form {
+  width: 600px;
+  height: 540px;
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__text {
+    font-size: 48px;
+    margin: 15px 0;
+    color: #feede1;
+  }
+
+  &__edit {
+    width: 250px;
+    height: 50px;
+    margin-top: 20px;
+
+    color: #feede1;
+    background-color: #462730;
+
+    border-radius: 40px;
+    border: none;
+  }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+
+    &__label {
+      font-size: 24px;
+      color: #feede1;
+      align-self: baseline;
+    }
+
+    &__input {
+      width: 450px;
+      height: 42px;
+
+      margin-bottom: 25px;
+      padding: 13px 18px;
+
+      box-sizing: border-box;
+      border: 1px solid #b9b9b9;
+      border-radius: 5px;
+      background: transparent;
+
+      font-weight: 400;
+      font-size: 24px;
+      color: #feede1;
+    }
+  }
+}

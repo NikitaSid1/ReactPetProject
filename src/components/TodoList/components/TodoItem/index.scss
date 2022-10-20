@@ -1,0 +1,83 @@
+button {
+  cursor: pointer;
+}
+
+.todo-element {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 850px;
+
+  margin-top: 20px;
+
+  border-radius: 5px;
+
+  text-align: start;
+  list-style-type: none;
+
+  background-color: #352432;
+
+  &__input {
+    width: 620px;
+    height: 50px;
+    font-size: 1rem;
+
+    margin: 0px 20px 0px 49px;
+    background: transparent;
+    color: #feede1;
+    border: none;
+    text-overflow: ellipsis;
+  }
+
+  &__input:disabled {
+    color: #feede16c;
+  }
+
+  &__checkbox {
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+
+  &__checkmark {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    left: 11px;
+    height: 25px;
+    width: 25px;
+    border: none;
+    background: center/90% no-repeat url('./assets/checkbox.svg');
+  }
+
+  &__checkbox:checked ~ &__checkmark {
+    background: center/90% no-repeat url('./assets/checkbox-checked.svg');
+  }
+
+  &__edit,
+  &__delete,
+  &__next-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+  }
+
+  &__delete img:hover,
+  &__edit img:hover,
+  &__next-page img:hover,
+  &__checkmark:hover {
+    opacity: 0.6;
+  }
+}

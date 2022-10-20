@@ -1,0 +1,39 @@
+.navbar {
+  position: relative;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__link {
+    font-size: 24px;
+    color: #feede1;
+    margin: 0 10px;
+  }
+
+  &__logout {
+    position: absolute;
+    right: 10px;
+
+    width: 150px;
+    height: 30px;
+    align-self: center;
+
+    font-size: 1.1rem;
+
+    color: #feede1;
+    background-color: #462730;
+
+    border-radius: 40px;
+    border: none;
+  }
+}
+
+.profile {
+  justify-self: end;
+}
+
+.todo {
+  justify-self: start;
+}
