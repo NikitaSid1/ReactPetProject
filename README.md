@@ -1,7 +1,15 @@
-### `npm start`
+# `React Todo-list application`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## `Prerequisites`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project requires NodeJS and NPM. Node and NPM are really easy to install. To make sure you have them available on your machine, try running the following command.
+
+```sh
+$ npm -v && node -v
+8.13.1
+v16.15.1
+```
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
