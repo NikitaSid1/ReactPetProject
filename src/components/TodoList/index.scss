@@ -25,10 +25,10 @@
 
     color: #feede1;
     background: transparent;
-  }
 
-  &__input::placeholder {
-    color: #4a2f39;
+    &::placeholder {
+      color: #4a2f39;
+    }
   }
 
   &__btn-add-todo {
@@ -38,10 +38,10 @@
     background-color: #462730;
     border-radius: 40px;
     border: none;
-  }
 
-  &__btn-add-todo:active {
-    border: 2px solid #241722;
+    &:active {
+      border: 2px solid #241722;
+    }
   }
 
   &__ul {

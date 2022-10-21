@@ -9,8 +9,13 @@
   align-items: center;
   flex-direction: column;
 
+  :last-child {
+    align-self: center;
+  }
+
   &__text {
     font-size: 48px;
+    font-weight: 700;
     margin: 15px 0;
     color: #feede1;
   }
@@ -18,6 +23,7 @@
   &__edit {
     width: 250px;
     height: 50px;
+    font-weight: 700;
     margin-top: 20px;
 
     color: #feede1;
@@ -37,6 +43,7 @@
 
     &__label {
       font-size: 24px;
+      font-weight: 700;
       color: #feede1;
       align-self: baseline;
     }

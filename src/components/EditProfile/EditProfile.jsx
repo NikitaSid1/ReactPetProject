@@ -100,10 +100,10 @@ export const EditProfile = () => {
                     name="lastNameProfile"
                     placeholder="Last Name"
                   />
+                  <button type="submit" className="editProfile-form__edit">
+                    Save
+                  </button>
                 </div>
-                <button type="submit" className="editProfile-form__edit">
-                  Save
-                </button>
               </Form>
             </Formik>
           )}
