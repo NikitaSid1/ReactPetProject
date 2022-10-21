@@ -3,13 +3,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.scss';
 
-import { Login } from './components/Authorizations/Login';
-import { Registration } from './components/Authorizations/Registration';
-import { EditProfile } from './components/EditProfile';
-import { Profile } from './components/Profile';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { SinglePage } from './components/SinglePage';
-import { TodoList } from './components/TodoList';
+import {
+  EditProfile,
+  Login,
+  Registration,
+  Profile,
+  ProtectedRoute,
+  SinglePage,
+  TodoList,
+} from './components';
 
 function App() {
   return (

@@ -28,10 +28,10 @@ button {
     color: #feede1;
     border: none;
     text-overflow: ellipsis;
-  }
 
-  &__input:disabled {
-    color: #feede16c;
+    &:disabled {
+      color: #feede16c;
+    }
   }
 
   &__checkbox {
