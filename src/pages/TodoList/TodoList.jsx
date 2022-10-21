@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import { useState, useEffect } from 'react';
+import * as React from 'react';
 import { toast } from 'react-toastify';
 
 import { TodoItem } from './components/TodoItem';
@@ -13,8 +13,8 @@ import './index.scss';
 export const TodoList = () => {
   const { request } = useJWTAccess();
 
-  const [todoText, setTodoText] = useState('');
-  const [todoItems, setTodoItems] = useState(null);
+  const [todoText, setTodoText] = React.useState('');
+  const [todoItems, setTodoItems] = React.useState(null);
 
   const getTodoListItems = async () => {
     try {
@@ -28,7 +28,7 @@ export const TodoList = () => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     getTodoListItems();
   }, []);
 

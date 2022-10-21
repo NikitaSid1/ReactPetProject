@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import React from 'react';
+import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

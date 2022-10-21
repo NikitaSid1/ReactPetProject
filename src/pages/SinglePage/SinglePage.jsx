@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
