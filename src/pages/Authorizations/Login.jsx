@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { InputText, initialValues, LoginSchema } from './authorizations';
-import { useHttp } from '../../hooks/http.hook';
+import { useHttp } from '../../hooks/httphook';
 
 import img from './assets/login.svg';
 

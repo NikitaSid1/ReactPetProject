@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar';
+import { useJWTAccess } from '../../hooks/httphook';
+import { Navbar } from '../../components/Navbar';
 
 import './index.scss';
 

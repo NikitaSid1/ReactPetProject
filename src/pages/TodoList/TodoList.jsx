@@ -2,9 +2,9 @@ import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
 import { toast } from 'react-toastify';
 
+import { useJWTAccess } from '../../hooks/httphook';
 import { TodoItem } from './components/TodoItem';
-import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar';
+import { Navbar } from '../../components/Navbar';
 
 import addTodo from './assets/btn-addTodo.svg';
 

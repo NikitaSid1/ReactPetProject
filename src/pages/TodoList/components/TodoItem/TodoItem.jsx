@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-import { useJWTAccess } from '../../../../hooks/http.hook';
+import { useJWTAccess } from '../../../../hooks/httphook';
 
 import editButton from './assets/edit-button.svg';
 import deleteButton from './assets/delete-button.svg';
