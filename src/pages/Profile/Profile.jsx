@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar/Navbar';
+import { Navbar } from '../Navbar';
+
 import './index.scss';
 
 export const Profile = () => {
   const { request } = useJWTAccess();
 
-  const [emailProfile, setEmailProfile] = useState('');
-  const [firstNameProfile, setFirstNameProfile] = useState('');
-  const [lastNameProfile, setLastNameProfile] = useState('');
+  const [emailProfile, setEmailProfile] = React.useState('');
+  const [firstNameProfile, setFirstNameProfile] = React.useState('');
+  const [lastNameProfile, setLastNameProfile] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     const dataFunction = async () => {
       const { data } = await request({
         url: 'http://localhost:4040/user/profile',

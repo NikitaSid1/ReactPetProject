@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 import { useJWTAccess } from '../../../../hooks/http.hook';
-import './index.scss';
+
 import editButton from './assets/edit-button.svg';
 import deleteButton from './assets/delete-button.svg';
 import nextPage from './assets/next-page.svg';
 
+import './index.scss';
+
 export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
-  const [name, setName] = useState(text);
-  const [disabled, setDisabled] = useState(true);
+  const [name, setName] = React.useState(text);
+  const [disabled, setDisabled] = React.useState(true);
   const history = useHistory();
 
   const { request } = useJWTAccess();

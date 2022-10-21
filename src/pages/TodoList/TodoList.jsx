@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { TodoItem } from './components/TodoItem';
-
 import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar/Navbar';
-import './index.scss';
+import { Navbar } from '../Navbar';
+
 import addTodo from './assets/btn-addTodo.svg';
+
+import './index.scss';
 
 export const TodoList = () => {
   const { request } = useJWTAccess();

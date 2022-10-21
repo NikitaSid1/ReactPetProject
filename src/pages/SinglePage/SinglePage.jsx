@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar/Navbar';
+import { Navbar } from '../Navbar';
+
 import './index.scss';
 
 export const SinglePage = () => {

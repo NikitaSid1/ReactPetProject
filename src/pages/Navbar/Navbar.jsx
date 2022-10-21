@@ -1,8 +1,9 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import './index.scss';
 
-export const Navbar = ({ disabled }) => {
+export const Navbar = ({ disabled = false }) => {
   const history = useHistory();
 
   const redirect = () => {
