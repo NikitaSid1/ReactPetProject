@@ -3,8 +3,9 @@ import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar/Navbar';
+import { useJWTAccess } from '../../hooks/httphook';
+import { Navbar } from '../../components/Navbar';
+
 import './index.scss';
 
 export const SinglePage = () => {

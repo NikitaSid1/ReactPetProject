@@ -3,10 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { InputText, initialValues, LoginSchema } from './authorizations';
+import { useHttp } from '../../hooks/httphook';
 
-import { useHttp } from '../../hooks/http.hook';
-import './index.scss';
 import img from './assets/login.svg';
+
+import './index.scss';
 
 export const Login = () => {
   const history = useHistory();

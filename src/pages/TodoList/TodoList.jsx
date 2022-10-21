@@ -1,19 +1,20 @@
 import { Formik, Form, Field } from 'formik';
-import { useState, useEffect } from 'react';
+import * as React from 'react';
 import { toast } from 'react-toastify';
 
+import { useJWTAccess } from '../../hooks/httphook';
 import { TodoItem } from './components/TodoItem';
+import { Navbar } from '../../components/Navbar';
 
-import { useJWTAccess } from '../../hooks/http.hook';
-import { Navbar } from '../Navbar/Navbar';
-import './index.scss';
 import addTodo from './assets/btn-addTodo.svg';
+
+import './index.scss';
 
 export const TodoList = () => {
   const { request } = useJWTAccess();
 
-  const [todoText, setTodoText] = useState('');
-  const [todoItems, setTodoItems] = useState(null);
+  const [todoText, setTodoText] = React.useState('');
+  const [todoItems, setTodoItems] = React.useState(null);
 
   const getTodoListItems = async () => {
     try {
@@ -27,7 +28,7 @@ export const TodoList = () => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     getTodoListItems();
   }, []);
 

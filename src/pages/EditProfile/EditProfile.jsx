@@ -1,21 +1,21 @@
 import { Formik, Form, Field } from 'formik';
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../hooks/http.hook';
-import './index.scss';
+import { useJWTAccess } from '../../hooks/httphook';
+import { Navbar } from '../../components/Navbar';
 
-import { Navbar } from '../Navbar/Navbar';
+import './index.scss';
 
 export const EditProfile = () => {
   const { request } = useJWTAccess();
 
-  const [emailProfile, setEmailProfile] = useState('');
-  const [firstNameProfile, setFirstNameProfile] = useState('');
-  const [lastNameProfile, setLastNameProfile] = useState('');
+  const [emailProfile, setEmailProfile] = React.useState('');
+  const [firstNameProfile, setFirstNameProfile] = React.useState('');
+  const [lastNameProfile, setLastNameProfile] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     const dataFunction = async () => {
       const { data } = await request({
         url: 'http://localhost:4040/user/profile',

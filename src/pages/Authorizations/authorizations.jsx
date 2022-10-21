@@ -3,6 +3,7 @@ import * as yup from 'yup';
 
 export const InputText = ({ ...props }) => {
   const [field, meta] = useField(props);
+
   return (
     <>
       <input className="authorisation__form__input" {...props} {...field} />

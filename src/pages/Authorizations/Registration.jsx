@@ -3,10 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { InputText, initialValues, LoginSchema } from './authorizations';
+import { useHttp } from '../../hooks/httphook';
 
-import { useHttp } from '../../hooks/http.hook';
-import './index.scss';
 import img from './assets/signUp.svg';
+
+import './index.scss';
 
 export const Registration = () => {
   const history = useHistory();
@@ -28,6 +29,7 @@ export const Registration = () => {
 
     resetForm({ email: '', password: '' });
   };
+
   return (
     <div className="authorisation">
       <Formik
