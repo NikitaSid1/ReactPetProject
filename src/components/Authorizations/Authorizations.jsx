@@ -8,7 +8,14 @@ import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
-export const Authorizations = ({ url, name, redirect, img, path, formClass }) => {
+export const Authorizations = ({
+  requestUrl,
+  pageNameLabel,
+  switchPageBtnLabel,
+  pageBackgroundImg,
+  switchPageBtnRoute,
+  formClassName,
+}) => {
   const history = useHistory();
 
   const { request } = useApi();
@@ -16,7 +23,7 @@ export const Authorizations = ({ url, name, redirect, img, path, formClass }) =>
   const handlerOnSubmit = async ({ email, password }, { resetForm }) => {
     try {
       await request({
-        url,
+        url: requestUrl,
         method: 'post',
         data: { email, password },
       });
@@ -36,22 +43,22 @@ export const Authorizations = ({ url, name, redirect, img, path, formClass }) =>
         validationSchema={LoginSchema}
         onSubmit={handlerOnSubmit}
       >
-        <Form className={formClass}>
-          <p className="authorisation__form__text">{name}</p>
+        <Form className={formClassName}>
+          <h3 className="authorisation__form__text">{pageNameLabel}</h3>
 
           <InputText placeholder="Email" type="email" name="email" />
           <InputText placeholder="Password" type="password" name="password" autoComplete="on" />
 
           <button className="authorisation__form__button" type="submit">
-            {name}
+            {pageNameLabel}
           </button>
         </Form>
       </Formik>
 
-      <img className="authorisation__img" src={img} alt="authorisationImg" />
-      <Link className="link" to={path}>
+      <img className="authorisation__img" src={pageBackgroundImg} alt="authorisationImg" />
+      <Link className="link" to={switchPageBtnRoute}>
         <button type="button" className="authorisation__form__button link__btn">
-          {redirect}
+          {switchPageBtnLabel}
         </button>
       </Link>
     </div>

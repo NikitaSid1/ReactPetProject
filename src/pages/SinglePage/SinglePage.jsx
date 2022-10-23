@@ -84,7 +84,7 @@ export const SinglePage = () => {
     }
   }, [title]);
 
-  const textareaCheckbox = cn('single-page__field__textarea', { textareaCheckbox: isDone });
+  const textareaClassName = cn('single-page__field__textarea', { textareaDecoration: isDone });
 
   return (
     <>
@@ -115,7 +115,7 @@ export const SinglePage = () => {
         <div className="single-page__field">
           <DebounceInput
             element="textarea"
-            className={textareaCheckbox}
+            className={textareaClassName}
             debounceTimeout={300}
             value={title}
             onChange={(event) => {

@@ -59,10 +59,10 @@ export const EditProfile = () => {
 
   return (
     <>
-      <Navbar disabled />
+      <Navbar />
       <section className="container">
         <div className="editProfile-form">
-          <p className="editProfile-form__text">Profile</p>
+          <h3 className="editProfile-form__text">Profile</h3>
 
           {emailProfile && (
             <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>

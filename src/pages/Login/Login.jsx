@@ -1,14 +1,15 @@
 import { Authorizations } from '../../components/Authorizations/Authorizations';
+import { Routes } from '../../routes/constants';
 
 import loginImg from './assets/login.svg';
 
 export const Login = () => (
   <Authorizations
-    url="http://localhost:4040/login"
-    formClass="authorisation__form"
-    name="Login"
-    redirect="Sign Up"
-    img={loginImg}
-    path="/registration"
+    requestUrl="http://localhost:4040/login"
+    pageNameLabel="Login"
+    switchPageBtnLabel="Sign Up"
+    pageBackgroundImg={loginImg}
+    switchPageBtnRoute={Routes.Registration}
+    formClassName="authorisation__form"
   />
 );

@@ -62,12 +62,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
-  const inputCheckbox = cn('todo-element__input', { inputDecoration: isDone });
+  const inpntClassName = cn('todo-element__input', { inputDecoration: isDone });
 
   return (
     <li className="todo-element">
       <input
-        className={inputCheckbox}
+        className={inpntClassName}
         type="text"
         disabled={disabled}
         name="todoElement"

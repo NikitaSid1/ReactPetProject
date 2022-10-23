@@ -36,6 +36,12 @@
     border-radius: 40px;
     border: none;
   }
+
+  &:disabled {
+    background-color: dimgrey;
+    color: linen;
+    opacity: 0.6;
+  }
 }
 
 .profile {

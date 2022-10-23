@@ -42,7 +42,7 @@ export const Profile = () => {
       <Navbar />
       <section className="container">
         <div className="profile-form">
-          <p className="profile-form__text">Profile</p>
+          <h3 className="profile-form__text">Profile</h3>
           <div className="profile-form__view">
             <View label="Email" name="email" placeholder={emailProfile} />
             {firstNameProfile && (
@@ -61,7 +61,7 @@ export const Profile = () => {
   );
 };
 
-const View = ({ label, name, placeholder, disabled = true }) => (
+const View = ({ label, name, placeholder }) => (
   <>
     <label className="profile-form__view__label" htmlFor={name}>
       {label}
@@ -71,7 +71,7 @@ const View = ({ label, name, placeholder, disabled = true }) => (
       type="text"
       name={name}
       placeholder={placeholder}
-      disabled={disabled}
+      disabled
     />
   </>
 );
