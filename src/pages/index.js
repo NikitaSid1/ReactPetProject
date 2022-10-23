@@ -1,6 +1,6 @@
 export { EditProfile } from './EditProfile';
-export { Login } from './Authorizations/Login';
-export { Registration } from './Authorizations/Registration';
+export { Login } from './Login';
+export { Registration } from './Registration';
 export { Profile } from './Profile';
 export { SinglePage } from './SinglePage';
 export { TodoList } from './TodoList';
