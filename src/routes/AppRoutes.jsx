@@ -35,7 +35,7 @@ export const AppRoutes = () => (
         <TodoList />
       </ProtectedRoute>
 
-      <ProtectedRoute exact path={Routes.SinglePage}>
+      <ProtectedRoute exact path={Routes.getSinglePage()}>
         <SinglePage />
       </ProtectedRoute>
     </Switch>

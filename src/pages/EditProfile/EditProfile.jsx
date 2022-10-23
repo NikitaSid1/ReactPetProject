@@ -1,10 +1,11 @@
-import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
+import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { Navbar } from '../../components/Navbar';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -34,7 +35,7 @@ export const EditProfile = () => {
 
   const history = useHistory();
 
-  const redirect = () => history.push('/profile');
+  const redirect = () => history.push(Routes.Profile);
 
   const handlerOnSubmit = async (value) => {
     try {
@@ -44,7 +45,7 @@ export const EditProfile = () => {
         data: { firstName: value.firstNameProfile, lastName: value.lastNameProfile },
       });
 
-      history.push('/profile');
+      redirect();
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
     }

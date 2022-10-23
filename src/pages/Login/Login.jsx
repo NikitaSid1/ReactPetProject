@@ -1,6 +1,6 @@
 import { Authorizations } from '../../components/Authorizations/Authorizations';
 
-import img from './assets/login.svg';
+import loginImg from './assets/login.svg';
 
 export const Login = () => (
   <Authorizations
@@ -8,7 +8,7 @@ export const Login = () => (
     formClass="authorisation__form"
     name="Login"
     redirect="Sign Up"
-    img={img}
+    img={loginImg}
     path="/registration"
   />
 );

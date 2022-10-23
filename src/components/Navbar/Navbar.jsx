@@ -1,5 +1,8 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
+
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -7,11 +10,13 @@ export const Navbar = ({ disabled = false }) => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/');
+    history.push(Routes.Index);
   };
 
+  const navDisable = cn('navbar', { navDisable: disabled });
+
   return (
-    <nav className="navbar" style={disabled ? { pointerEvents: 'none', opacity: '0.4' } : {}}>
+    <nav className={navDisable}>
       <NavLink exact to="/profile" className="navbar__link profile" activeClassName="active">
         Profile
       </NavLink>

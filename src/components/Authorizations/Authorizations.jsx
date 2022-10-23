@@ -2,15 +2,16 @@ import { Formik, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useIp } from '../../hooks/httphook';
+import { useApi } from '../../hooks/httphook';
 import { initialValues, LoginSchema, InputText } from './utils';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
 export const Authorizations = ({ url, name, redirect, img, path, formClass }) => {
   const history = useHistory();
 
-  const { request } = useIp();
+  const { request } = useApi();
 
   const handlerOnSubmit = async ({ email, password }, { resetForm }) => {
     try {
@@ -20,7 +21,7 @@ export const Authorizations = ({ url, name, redirect, img, path, formClass }) =>
         data: { email, password },
       });
 
-      history.push('/profile');
+      history.push(Routes.Profile);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
     }

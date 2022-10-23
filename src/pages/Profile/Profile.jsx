@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { Navbar } from '../../components/Navbar';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -33,7 +34,7 @@ export const Profile = () => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/profile/edit');
+    history.push(Routes.ProfileEdit);
   };
 
   return (

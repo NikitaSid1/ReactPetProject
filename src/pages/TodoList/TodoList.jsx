@@ -1,12 +1,12 @@
-import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
+import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { TodoItem } from './components/TodoItem';
 import { Navbar } from '../../components/Navbar';
 
-import addTodo from './assets/btn-addTodo.svg';
+import addTodoImg from './assets/btnAddTodo.svg';
 
 import './index.scss';
 
@@ -58,7 +58,7 @@ export const TodoList = () => {
   return (
     <>
       <Navbar />
-      <section className="container" style={{ display: 'flex', flexDirection: 'column' }}>
+      <section className="todo-section">
         <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
           <Form className="todo-form">
             <Field
@@ -69,7 +69,7 @@ export const TodoList = () => {
               placeholder="New todo"
             />
             <button className="todo-form__btn-add-todo" type="submit">
-              <img src={addTodo} alt="add-todo" />
+              <img src={addTodoImg} alt="add-todo" />
             </button>
           </Form>
         </Formik>
