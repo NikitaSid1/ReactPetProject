@@ -68,39 +68,12 @@ export const EditProfile = () => {
             <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
               <Form>
                 <div className="editProfile-form__view">
-                  <label className="editProfile-form__view__label" htmlFor="email">
-                    Email
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={emailProfile}
-                    disabled
-                  />
+                  <View label="Email" name="emailProfile" disabled />
 
-                  <label className="editProfile-form__view__label" htmlFor="firstName">
-                    FirstName
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="text"
-                    id="firstName"
-                    name="firstNameProfile"
-                    placeholder="First Name"
-                  />
+                  <View label="First Name" name="firstNameProfile" disabled={false} />
 
-                  <label className="editProfile-form__view__label" htmlFor="lastName">
-                    LastName
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="text"
-                    id="lastName"
-                    name="lastNameProfile"
-                    placeholder="Last Name"
-                  />
+                  <View label="Last Name" name="lastNameProfile" disabled={false} />
+
                   <button type="submit" className="editProfile-form__edit">
                     Save
                   </button>
@@ -117,3 +90,20 @@ export const EditProfile = () => {
     </>
   );
 };
+
+const View = ({ label, name, disabled }) => (
+  <>
+    <label className="editProfile-form__view__label" htmlFor={name}>
+      {label}
+    </label>
+
+    <Field
+      className="editProfile-form__view__input"
+      type="text"
+      name={name}
+      id={name}
+      placeholder={label}
+      disabled={disabled}
+    />
+  </>
+);

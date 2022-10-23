@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
 
 import { useJWTAccess } from '../../hooks/httphook';
@@ -37,41 +38,55 @@ export const Profile = () => {
     history.push(Routes.ProfileEdit);
   };
 
+  const initialValues = {
+    emailProfile,
+    firstNameProfile,
+    lastNameProfile,
+  };
+
   return (
     <>
       <Navbar />
       <section className="container">
         <div className="profile-form">
           <h3 className="profile-form__text">Profile</h3>
-          <div className="profile-form__view">
-            <View label="Email" name="email" placeholder={emailProfile} />
-            {firstNameProfile && (
-              <View label="FirstName" name="firstName" placeholder={firstNameProfile} />
-            )}
-            {lastNameProfile && (
-              <View label="LastName" name="lastName" placeholder={lastNameProfile} />
-            )}
-            <button type="button" className="profile-form__edit-btn" onClick={() => redirect()}>
-              Edit
-            </button>
-          </div>
+
+          {emailProfile && (
+            <Formik initialValues={initialValues}>
+              <Form>
+                <div className="profile-form__view">
+                  <View label="Email" name="emailProfile" disabled />
+
+                  {firstNameProfile && <View label="First Name" name="firstNameProfile" disabled />}
+
+                  {lastNameProfile && <View label="Last Name" name="lastNameProfile" disabled />}
+
+                  <button type="button" className="profile-form__edit-btn" onClick={redirect}>
+                    Edit
+                  </button>
+                </div>
+              </Form>
+            </Formik>
+          )}
         </div>
       </section>
     </>
   );
 };
 
-const View = ({ label, name, placeholder }) => (
+const View = ({ label, name, disabled }) => (
   <>
-    <label className="profile-form__view__label" htmlFor={name}>
+    <label className="editProfile-form__view__label" htmlFor={name}>
       {label}
     </label>
-    <input
-      className="profile-form__view__input"
+
+    <Field
+      className="editProfile-form__view__input"
       type="text"
       name={name}
-      placeholder={placeholder}
-      disabled
+      id={name}
+      placeholder={label}
+      disabled={disabled}
     />
   </>
 );
