@@ -1,8 +1,10 @@
-.container {
+.todo-section {
   display: flex;
   align-items: center;
-  width: 100%;
+  flex-direction: column;
+  width: 100vw;
 }
+
 .todo-form {
   width: 850px;
 

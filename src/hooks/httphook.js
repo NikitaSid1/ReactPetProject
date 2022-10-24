@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const useHttp = () => {
+export const useApi = () => {
   const request = async ({
     url,
     method = 'get',

@@ -2,6 +2,10 @@ button {
   cursor: pointer;
 }
 
+.inputDecoration {
+  text-decoration-line: line-through;
+}
+
 .todo-element {
   position: relative;
   display: flex;
@@ -56,7 +60,7 @@ button {
   }
 
   &__checkbox:checked ~ &__checkmark {
-    background: center/90% no-repeat url('./assets/checkbox-checked.svg');
+    background: center/90% no-repeat url('./assets/checkboxChecked.svg');
   }
 
   &__edit,

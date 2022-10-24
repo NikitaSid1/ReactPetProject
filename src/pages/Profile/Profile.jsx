@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { Navbar } from '../../components/Navbar';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -33,7 +35,13 @@ export const Profile = () => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/profile/edit');
+    history.push(Routes.ProfileEdit);
+  };
+
+  const initialValues = {
+    emailProfile,
+    firstNameProfile,
+    lastNameProfile,
   };
 
   return (
@@ -41,36 +49,44 @@ export const Profile = () => {
       <Navbar />
       <section className="container">
         <div className="profile-form">
-          <p className="profile-form__text">Profile</p>
-          <div className="profile-form__view">
-            <View label="Email" name="email" placeholder={emailProfile} />
-            {firstNameProfile && (
-              <View label="FirstName" name="firstName" placeholder={firstNameProfile} />
-            )}
-            {lastNameProfile && (
-              <View label="LastName" name="lastName" placeholder={lastNameProfile} />
-            )}
-            <button type="button" className="profile-form__edit-btn" onClick={() => redirect()}>
-              Edit
-            </button>
-          </div>
+          <h3 className="profile-form__text">Profile</h3>
+
+          {emailProfile && (
+            <Formik initialValues={initialValues}>
+              <Form>
+                <div className="profile-form__view">
+                  <View label="Email" name="emailProfile" />
+
+                  {firstNameProfile && <View label="First Name" name="firstNameProfile" />}
+
+                  {lastNameProfile && <View label="Last Name" name="lastNameProfile" />}
+
+                  <button type="button" className="profile-form__edit-btn" onClick={redirect}>
+                    Edit
+                  </button>
+                </div>
+              </Form>
+            </Formik>
+          )}
         </div>
       </section>
     </>
   );
 };
 
-const View = ({ label, name, placeholder, disabled = true }) => (
+const View = ({ label, name }) => (
   <>
-    <label className="profile-form__view__label" htmlFor={name}>
+    <label className="editProfile-form__view__label" htmlFor={name}>
       {label}
     </label>
-    <input
-      className="profile-form__view__input"
+
+    <Field
+      className="editProfile-form__view__input"
       type="text"
       name={name}
-      placeholder={placeholder}
-      disabled={disabled}
+      id={name}
+      placeholder={label}
+      disabled
     />
   </>
 );

@@ -2,9 +2,11 @@ import * as React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import cn from 'classnames';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { Navbar } from '../../components/Navbar';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -41,7 +43,7 @@ export const SinglePage = () => {
         data: { todoId: id },
       });
 
-      history.push('/todo-list');
+      history.push(Routes.TodoList);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
     }
@@ -82,6 +84,8 @@ export const SinglePage = () => {
     }
   }, [title]);
 
+  const textareaClassName = cn('single-page__field__textarea', { textareaDecoration: isDone });
+
   return (
     <>
       <Navbar />
@@ -107,11 +111,11 @@ export const SinglePage = () => {
             GO BACK
           </button>
         </div>
-        <div className="single-page__field" style={{ color: 'white' }}>
+
+        <div className="single-page__field">
           <DebounceInput
             element="textarea"
-            className="single-page__field__textarea"
-            style={isDone ? { textDecorationLine: 'line-through' } : null}
+            className={textareaClassName}
             debounceTimeout={300}
             value={title}
             onChange={(event) => {

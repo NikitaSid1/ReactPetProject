@@ -2,27 +2,33 @@ import { Formik, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { InputText, initialValues, LoginSchema } from './authorizations';
-import { useHttp } from '../../hooks/httphook';
-
-import img from './assets/signUp.svg';
+import { useApi } from '../../hooks/httphook';
+import { initialValues, LoginSchema, InputText } from './utils';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
-export const Registration = () => {
+export const Authorizations = ({
+  requestUrl,
+  pageNameLabel,
+  switchPageBtnLabel,
+  pageBackgroundImg,
+  switchPageBtnRoute,
+  formClassName,
+}) => {
   const history = useHistory();
 
-  const { request } = useHttp();
+  const { request } = useApi();
 
   const handlerOnSubmit = async ({ email, password }, { resetForm }) => {
     try {
       await request({
-        url: 'http://localhost:4040/signup',
+        url: requestUrl,
         method: 'post',
         data: { email, password },
       });
 
-      history.push('/profile');
+      history.push(Routes.Profile);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
     }
@@ -37,22 +43,22 @@ export const Registration = () => {
         validationSchema={LoginSchema}
         onSubmit={handlerOnSubmit}
       >
-        <Form className="authorisation__form reverse">
-          <p className="authorisation__form__text">Sign Up</p>
+        <Form className={formClassName}>
+          <h3 className="authorisation__form__text">{pageNameLabel}</h3>
 
           <InputText placeholder="Email" type="email" name="email" />
           <InputText placeholder="Password" type="password" name="password" autoComplete="on" />
 
           <button className="authorisation__form__button" type="submit">
-            Sign Up
+            {pageNameLabel}
           </button>
         </Form>
       </Formik>
 
-      <img className="authorisation__img" src={img} alt="authorisationImg" />
-      <Link className="link" to="/">
+      <img className="authorisation__img" src={pageBackgroundImg} alt="authorisationImg" />
+      <Link className="link" to={switchPageBtnRoute}>
         <button type="button" className="authorisation__form__button link__btn">
-          Login
+          {switchPageBtnLabel}
         </button>
       </Link>
     </div>

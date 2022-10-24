@@ -1,10 +1,11 @@
-import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
+import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../hooks/httphook';
 import { Navbar } from '../../components/Navbar';
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
@@ -34,7 +35,7 @@ export const EditProfile = () => {
 
   const history = useHistory();
 
-  const redirect = () => history.push('/profile');
+  const redirect = () => history.push(Routes.Profile);
 
   const handlerOnSubmit = async (value) => {
     try {
@@ -44,7 +45,7 @@ export const EditProfile = () => {
         data: { firstName: value.firstNameProfile, lastName: value.lastNameProfile },
       });
 
-      history.push('/profile');
+      redirect();
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
     }
@@ -58,48 +59,21 @@ export const EditProfile = () => {
 
   return (
     <>
-      <Navbar disabled />
+      <Navbar />
       <section className="container">
         <div className="editProfile-form">
-          <p className="editProfile-form__text">Profile</p>
+          <h3 className="editProfile-form__text">Profile</h3>
 
           {emailProfile && (
             <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
               <Form>
                 <div className="editProfile-form__view">
-                  <label className="editProfile-form__view__label" htmlFor="email">
-                    Email
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={emailProfile}
-                    disabled
-                  />
+                  <View label="Email" name="emailProfile" disabled />
 
-                  <label className="editProfile-form__view__label" htmlFor="firstName">
-                    FirstName
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="text"
-                    id="firstName"
-                    name="firstNameProfile"
-                    placeholder="First Name"
-                  />
+                  <View label="First Name" name="firstNameProfile" disabled={false} />
 
-                  <label className="editProfile-form__view__label" htmlFor="lastName">
-                    LastName
-                  </label>
-                  <Field
-                    className="editProfile-form__view__input"
-                    type="text"
-                    id="lastName"
-                    name="lastNameProfile"
-                    placeholder="Last Name"
-                  />
+                  <View label="Last Name" name="lastNameProfile" disabled={false} />
+
                   <button type="submit" className="editProfile-form__edit">
                     Save
                   </button>
@@ -116,3 +90,20 @@ export const EditProfile = () => {
     </>
   );
 };
+
+const View = ({ label, name, disabled }) => (
+  <>
+    <label className="editProfile-form__view__label" htmlFor={name}>
+      {label}
+    </label>
+
+    <Field
+      className="editProfile-form__view__input"
+      type="text"
+      name={name}
+      id={name}
+      placeholder={label}
+      disabled={disabled}
+    />
+  </>
+);

@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
+import { Routes } from '../../../../routes/constants';
 
-import editButton from './assets/edit-button.svg';
-import deleteButton from './assets/delete-button.svg';
-import nextPage from './assets/next-page.svg';
+import editButtonImg from './assets/editButton.svg';
+import deleteButtonImg from './assets/deleteButton.svg';
+import nextPageImg from './assets/nextPage.svg';
 
 import './index.scss';
 
@@ -60,11 +62,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
+  const inpntClassName = cn('todo-element__input', { inputDecoration: isDone });
+
   return (
-    <li className="todo-element" id={id}>
+    <li className="todo-element">
       <input
-        className="todo-element__input"
-        style={isDone ? { textDecorationLine: 'line-through' } : null}
+        className={inpntClassName}
         type="text"
         disabled={disabled}
         name="todoElement"
@@ -82,11 +85,11 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
           }
         }}
       >
-        <img src={editButton} alt="editButton" />
+        <img src={editButtonImg} alt="editButton" />
       </button>
 
       <button type="button" className="todo-element__delete" onClick={() => onDelete(id)}>
-        <img src={deleteButton} alt="delete" />
+        <img src={deleteButtonImg} alt="delete" />
       </button>
 
       <label className="containerLabel">
@@ -102,9 +105,9 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
       <button
         type="button"
         className="todo-element__next-page"
-        onClick={() => history.push(`/todo-list/${id}`)}
+        onClick={() => history.push(Routes.getSinglePage(id))}
       >
-        <img src={nextPage} alt="next-page" />
+        <img src={nextPageImg} alt="next-page" />
       </button>
     </li>
   );

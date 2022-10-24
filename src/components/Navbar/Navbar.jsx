@@ -1,21 +1,22 @@
 import { NavLink, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
-export const Navbar = ({ disabled = false }) => {
+export const Navbar = () => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/');
+    history.push(Routes.Index);
   };
 
   return (
-    <nav className="navbar" style={disabled ? { pointerEvents: 'none', opacity: '0.4' } : {}}>
-      <NavLink exact to="/profile" className="navbar__link profile" activeClassName="active">
+    <nav className="navbar">
+      <NavLink exact to={Routes.Profile} className="navbar__link profile" activeClassName="active">
         Profile
       </NavLink>
-      <NavLink exact to="/todo-list" className="navbar__link todo" activeClassName="active">
+      <NavLink exact to={Routes.TodoList} className="navbar__link todo" activeClassName="active">
         To-Do List
       </NavLink>
 
@@ -31,9 +32,4 @@ export const Navbar = ({ disabled = false }) => {
       </button>
     </nav>
   );
-};
-
-Navbar.propTypes = {
-  // eslint-disable-next-line
-  disabled: PropTypes.bool,
 };
