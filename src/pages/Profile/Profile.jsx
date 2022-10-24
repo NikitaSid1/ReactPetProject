@@ -55,11 +55,11 @@ export const Profile = () => {
             <Formik initialValues={initialValues}>
               <Form>
                 <div className="profile-form__view">
-                  <View label="Email" name="emailProfile" disabled />
+                  <View label="Email" name="emailProfile" />
 
-                  {firstNameProfile && <View label="First Name" name="firstNameProfile" disabled />}
+                  {firstNameProfile && <View label="First Name" name="firstNameProfile" />}
 
-                  {lastNameProfile && <View label="Last Name" name="lastNameProfile" disabled />}
+                  {lastNameProfile && <View label="Last Name" name="lastNameProfile" />}
 
                   <button type="button" className="profile-form__edit-btn" onClick={redirect}>
                     Edit
@@ -74,7 +74,7 @@ export const Profile = () => {
   );
 };
 
-const View = ({ label, name, disabled }) => (
+const View = ({ label, name }) => (
   <>
     <label className="editProfile-form__view__label" htmlFor={name}>
       {label}
@@ -86,7 +86,7 @@ const View = ({ label, name, disabled }) => (
       name={name}
       id={name}
       placeholder={label}
-      disabled={disabled}
+      disabled
     />
   </>
 );

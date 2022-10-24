@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.editProfile-form__view__input:disabled {
+  opacity: 0.6;
+}
+
 .profile-form {
   position: relative;
 
