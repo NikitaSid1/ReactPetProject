@@ -1,14 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import {
-  Login,
-  Registration,
-  Profile,
-  EditProfile,
-  TodoList,
-  SinglePage,
-  ProtectedRoute,
-} from '../pages';
+import { Login, Registration, Profile, TodoList, SinglePage, ProtectedRoute } from '../pages';
 
 import { Routes } from './constants';
 
@@ -23,12 +15,8 @@ export const AppRoutes = () => (
         <Registration />
       </Route>
 
-      <ProtectedRoute exact path={Routes.Profile}>
+      <ProtectedRoute path={Routes.Profile}>
         <Profile />
-      </ProtectedRoute>
-
-      <ProtectedRoute exact path={Routes.ProfileEdit}>
-        <EditProfile />
       </ProtectedRoute>
 
       <ProtectedRoute exact path={Routes.TodoList}>
