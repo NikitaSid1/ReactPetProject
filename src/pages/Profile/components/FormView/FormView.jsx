@@ -13,7 +13,7 @@ export const FormView = () => {
   return (
     <ProfileForm
       formButtonName="Edit"
-      formButtonType="button"
+      isSubmitButton={false}
       isEditButton
       handleButtonOnClick={redirect}
       isShowInput

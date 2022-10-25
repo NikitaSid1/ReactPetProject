@@ -37,7 +37,7 @@ export const FormEdit = () => {
   return (
     <ProfileForm
       formButtonName="Save"
-      formButtonType="submit"
+      isSubmitButton
       exitButton={exitButton}
       isInputDisabled={false}
       handlerOnSubmit={handlerOnSubmit}

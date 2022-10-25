@@ -5,12 +5,12 @@ import cn from 'classnames';
 import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
-import { FormField } from '../FormField/FormField';
+import { FormField } from '../FormField';
 import { SkeletonField } from '../SkeletonField';
 
 export const ProfileForm = ({
   formButtonName,
-  formButtonType,
+  isSubmitButton,
   isInputDisabled,
   exitButton = null,
   isEditButton = false,
@@ -73,7 +73,7 @@ export const ProfileForm = ({
               )}
 
               <button
-                type={formButtonType ? 'submit' : 'button'}
+                type={isSubmitButton ? 'submit' : 'button'}
                 className={editBtnClassName}
                 onClick={handleButtonOnClick}
               >
@@ -93,7 +93,7 @@ export const ProfileForm = ({
 
 ProfileForm.propTypes = {
   formButtonName: PropTypes.string.isRequired,
-  formButtonType: PropTypes.string.isRequired,
+  isSubmitButton: PropTypes.bool.isRequired,
   isInputDisabled: PropTypes.bool.isRequired,
   exitButton: PropTypes.element,
   isEditButton: PropTypes.bool,
