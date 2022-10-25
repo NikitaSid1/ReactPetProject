@@ -1,17 +1,18 @@
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../../../hooks/httphook';
-import { Routes } from '../../../../routes/constants';
-import { ProfileForm } from './ProfileForm';
+import { useJWTAccess } from '../../../../../hooks/httphook';
+import { Routes } from '../../../../../routes/constants';
+import { ProfileForm } from '../ProfileForm';
 
 export const FormEdit = () => {
-  const { request } = useJWTAccess();
   const history = useHistory();
 
   const redirect = () => {
     history.push(Routes.Profile);
   };
+
+  const { request } = useJWTAccess();
 
   const handlerOnSubmit = async (value) => {
     try {
@@ -27,7 +28,7 @@ export const FormEdit = () => {
     }
   };
 
-  const buttonExit = (
+  const exitButton = (
     <button type="button" className="profile-form__button" onClick={redirect}>
       Exit
     </button>
@@ -35,10 +36,10 @@ export const FormEdit = () => {
 
   return (
     <ProfileForm
-      nameFromButton="Save"
-      typeFormButton="submit"
-      buttonExit={buttonExit}
-      disabledInput={false}
+      formButtonName="Save"
+      isButtonSubmit="submit"
+      exitButton={exitButton}
+      isInputDisabled={false}
       handlerOnSubmit={handlerOnSubmit}
     />
   );

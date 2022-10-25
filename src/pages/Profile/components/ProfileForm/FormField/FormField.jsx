@@ -1,6 +1,6 @@
 import { Field } from 'formik';
 
-export const View = ({ label, name, disabled }) => (
+export const FormField = ({ label, name, disabled }) => (
   <>
     <label className="profile-form__view__label" htmlFor={name}>
       {label}
