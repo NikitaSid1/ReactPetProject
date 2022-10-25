@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 
-import { FormView, FormEdit } from './components/ProfileForm';
+import { FormView, FormEdit } from './components';
 import { Routes } from '../../routes/constants';
 import { Navbar } from '../../components/Navbar';
 

@@ -1,9 +1,9 @@
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../../../../hooks/httphook';
-import { Routes } from '../../../../../routes/constants';
-import { ProfileForm } from '../ProfileForm';
+import { useJWTAccess } from '../../../../hooks/httphook';
+import { Routes } from '../../../../routes/constants';
+import { ProfileForm } from '..';
 
 export const FormEdit = () => {
   const history = useHistory();

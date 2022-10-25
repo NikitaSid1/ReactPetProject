@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../../../../hooks/httphook';
+import { useJWTAccess } from '../../../../hooks/httphook';
 import { FormField } from '../FormField/FormField';
 import { SkeletonBox } from '../SkeletonBox';
 
 export const ProfileForm = ({
   formButtonName,
   isEditButton = false,
-  isButtonSubmit = 'button',
+  isButtonSubmit = false,
   exitButton = null,
   handleButtonOnClick = null,
   isShowInput = false,
@@ -53,8 +53,8 @@ export const ProfileForm = ({
 
   const profileButtonEdit = cn('profile-form__button', { isEditButton });
 
-  const inputFirstName = firstNameProfile || !isShowInput;
-  const inputLastName = lastNameProfile || !isShowInput;
+  const isInputFirstName = firstNameProfile || !isShowInput;
+  const isInputLastName = lastNameProfile || !isShowInput;
 
   return (
     <>
@@ -64,11 +64,11 @@ export const ProfileForm = ({
             <div className="profile-form__view">
               <FormField label="Email" name="emailProfile" disabled />
 
-              {inputFirstName && (
+              {isInputFirstName && (
                 <FormField label="First Name" name="firstNameProfile" disabled={isInputDisabled} />
               )}
 
-              {inputLastName && (
+              {isInputLastName && (
                 <FormField label="Last Name" name="lastNameProfile" disabled={isInputDisabled} />
               )}
 
@@ -94,7 +94,7 @@ export const ProfileForm = ({
 ProfileForm.propTypes = {
   formButtonName: PropTypes.string,
   isEditButton: PropTypes.bool,
-  isButtonSubmit: PropTypes.string.isRequired,
+  isButtonSubmit: PropTypes.string,
   exitButton: PropTypes.element,
   handleButtonOnClick: PropTypes.func,
   isShowInput: PropTypes.bool,
