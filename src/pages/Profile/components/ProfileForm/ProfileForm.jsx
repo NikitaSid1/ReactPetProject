@@ -6,17 +6,17 @@ import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
 import { FormField } from '../FormField/FormField';
-import { SkeletonBox } from '../SkeletonBox';
+import { SkeletonField } from '../SkeletonField';
 
 export const ProfileForm = ({
   formButtonName,
-  isEditButton = false,
-  isButtonSubmit = false,
+  formButtonType,
+  isInputDisabled,
   exitButton = null,
-  handleButtonOnClick = null,
+  isEditButton = false,
   isShowInput = false,
-  isInputDisabled = false,
-  handlerOnSubmit = null,
+  handleButtonOnClick = () => {},
+  handlerOnSubmit = () => {},
 }) => {
   const { request } = useJWTAccess();
 
@@ -25,8 +25,8 @@ export const ProfileForm = ({
   const [lastNameProfile, setLastNameProfile] = React.useState('');
 
   React.useEffect(() => {
-    try {
-      const getProfileDate = async () => {
+    const getProfileDate = async () => {
+      try {
         const { data } = await request({
           url: 'http://localhost:4040/user/profile',
           method: 'get',
@@ -37,12 +37,12 @@ export const ProfileForm = ({
         setEmailProfile(email);
         setFirstNameProfile(firstName);
         setLastNameProfile(lastName);
-      };
+      } catch (e) {
+        toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      }
+    };
 
-      getProfileDate();
-    } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
-    }
+    getProfileDate();
   }, []);
 
   const initialValues = {
@@ -51,7 +51,7 @@ export const ProfileForm = ({
     lastNameProfile,
   };
 
-  const profileButtonEdit = cn('profile-form__button', { isEditButton });
+  const editBtnClassName = cn('profile-form__button', { isEditButton });
 
   const isInputFirstName = firstNameProfile || !isShowInput;
   const isInputLastName = lastNameProfile || !isShowInput;
@@ -73,8 +73,8 @@ export const ProfileForm = ({
               )}
 
               <button
-                type={isButtonSubmit ? 'submit' : 'button'}
-                className={profileButtonEdit}
+                type={formButtonType ? 'submit' : 'button'}
+                className={editBtnClassName}
                 onClick={handleButtonOnClick}
               >
                 {formButtonName}
@@ -86,18 +86,18 @@ export const ProfileForm = ({
         </Formik>
       )}
 
-      {!emailProfile && <SkeletonBox />}
+      {!emailProfile && <SkeletonField />}
     </>
   );
 };
 
 ProfileForm.propTypes = {
-  formButtonName: PropTypes.string,
-  isEditButton: PropTypes.bool,
-  isButtonSubmit: PropTypes.string,
+  formButtonName: PropTypes.string.isRequired,
+  formButtonType: PropTypes.string.isRequired,
+  isInputDisabled: PropTypes.bool.isRequired,
   exitButton: PropTypes.element,
-  handleButtonOnClick: PropTypes.func,
+  isEditButton: PropTypes.bool,
   isShowInput: PropTypes.bool,
-  isInputDisabled: PropTypes.bool,
+  handleButtonOnClick: PropTypes.func,
   handlerOnSubmit: PropTypes.func,
 };

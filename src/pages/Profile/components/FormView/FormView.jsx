@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 
-import { ProfileForm } from '..';
+import { ProfileForm } from '../ProfileForm';
 import { Routes } from '../../../../routes/constants';
 
 export const FormView = () => {
@@ -13,7 +13,7 @@ export const FormView = () => {
   return (
     <ProfileForm
       formButtonName="Edit"
-      isButtonSubmit="button"
+      formButtonType="button"
       isEditButton
       handleButtonOnClick={redirect}
       isShowInput

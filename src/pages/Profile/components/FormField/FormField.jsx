@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Field } from 'formik';
 
 export const FormField = ({ label, name, disabled }) => (
@@ -16,3 +17,9 @@ export const FormField = ({ label, name, disabled }) => (
     />
   </>
 );
+
+FormField.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};

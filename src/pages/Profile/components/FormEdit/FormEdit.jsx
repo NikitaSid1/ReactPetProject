@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
 import { Routes } from '../../../../routes/constants';
-import { ProfileForm } from '..';
+import { ProfileForm } from '../ProfileForm';
 
 export const FormEdit = () => {
   const history = useHistory();
@@ -14,12 +14,12 @@ export const FormEdit = () => {
 
   const { request } = useJWTAccess();
 
-  const handlerOnSubmit = async (value) => {
+  const handlerOnSubmit = async ({ firstNameProfile, lastNameProfile }) => {
     try {
       await request({
         url: 'http://localhost:4040/user/profile',
         method: 'put',
-        data: { firstName: value.firstNameProfile, lastName: value.lastNameProfile },
+        data: { firstName: firstNameProfile, lastName: lastNameProfile },
       });
 
       redirect();
@@ -37,7 +37,7 @@ export const FormEdit = () => {
   return (
     <ProfileForm
       formButtonName="Save"
-      isButtonSubmit="submit"
+      formButtonType="submit"
       exitButton={exitButton}
       isInputDisabled={false}
       handlerOnSubmit={handlerOnSubmit}
