@@ -18,6 +18,8 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 0,
     'operator-linebreak': 0,
     'no-console': 1,
+    'react/jsx-indent': 0,
+    'react/require-default-props': 0,
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   overrides: [],

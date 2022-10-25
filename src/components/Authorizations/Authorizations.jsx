@@ -1,5 +1,6 @@
 import { Formik, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
 import { useApi } from '../../hooks/httphook';
@@ -63,4 +64,13 @@ export const Authorizations = ({
       </Link>
     </div>
   );
+};
+
+Authorizations.propTypes = {
+  requestUrl: PropTypes.string.isRequired,
+  pageNameLabel: PropTypes.string.isRequired,
+  switchPageBtnLabel: PropTypes.string.isRequired,
+  pageBackgroundImg: PropTypes.string.isRequired,
+  switchPageBtnRoute: PropTypes.string.isRequired,
+  formClassName: PropTypes.string.isRequired,
 };
