@@ -30,7 +30,7 @@ export const FormEdit = () => {
 
   const exitButton = (
     <button type="button" className="profile-form__button" onClick={redirect}>
-      Exit
+      Cancel
     </button>
   );
 
