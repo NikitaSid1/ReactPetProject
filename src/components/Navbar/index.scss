@@ -1,8 +1,3 @@
-.navDisable {
-  pointer-events: none;
-  opacity: 0.4;
-}
-
 .navbar {
   position: relative;
   height: 40px;
@@ -17,6 +12,10 @@
     color: #feede1;
     margin: 0 20px;
     font-weight: 500;
+  }
+
+  &__profile-link {
+    justify-self: end;
   }
 
   &__logout {
@@ -42,12 +41,4 @@
     color: linen;
     opacity: 0.6;
   }
-}
-
-.profile {
-  justify-self: end;
-}
-
-.todo {
-  justify-self: start;
 }

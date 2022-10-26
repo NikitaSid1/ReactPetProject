@@ -1,18 +1,22 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Login, Registration, Profile, TodoList, SinglePage, ProtectedRoute } from '../pages';
-
 import { Routes } from './constants';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 
 export const AppRoutes = () => (
   <Router>
     <Switch>
       <Route exact path={Routes.Index}>
-        <Login />
+        <ErrorBoundary>
+          <Login />
+        </ErrorBoundary>
       </Route>
 
       <Route exact path={Routes.Registration}>
-        <Registration />
+        <ErrorBoundary>
+          <Registration />
+        </ErrorBoundary>
       </Route>
 
       <ProtectedRoute path={Routes.Profile}>
@@ -20,11 +24,15 @@ export const AppRoutes = () => (
       </ProtectedRoute>
 
       <ProtectedRoute exact path={Routes.TodoList}>
-        <TodoList />
+        <ErrorBoundary>
+          <TodoList />
+        </ErrorBoundary>
       </ProtectedRoute>
 
       <ProtectedRoute exact path={Routes.getSinglePage()}>
-        <SinglePage />
+        <ErrorBoundary>
+          <SinglePage />
+        </ErrorBoundary>
       </ProtectedRoute>
     </Switch>
   </Router>

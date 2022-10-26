@@ -21,7 +21,9 @@ export const InputText = ({ ...props }) => {
   return (
     <>
       <input className="authorisation__form__input" {...props} {...field} />
-      {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
+      {meta.touched && meta.error ? (
+        <div className="authorisation__form__error">{meta.error}</div>
+      ) : null}
     </>
   );
 };

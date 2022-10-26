@@ -13,10 +13,15 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <NavLink exact to={Routes.Profile} className="navbar__link profile" activeClassName="active">
+      <NavLink
+        exact
+        to={Routes.Profile}
+        className="navbar__link navbar__profile-link"
+        activeClassName="active"
+      >
         Profile
       </NavLink>
-      <NavLink exact to={Routes.TodoList} className="navbar__link todo" activeClassName="active">
+      <NavLink exact to={Routes.TodoList} className="navbar__link" activeClassName="active">
         To-Do List
       </NavLink>
 

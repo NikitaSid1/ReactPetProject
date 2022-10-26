@@ -51,7 +51,9 @@ export const ProfileForm = ({
     lastNameProfile,
   };
 
-  const editBtnClassName = cn('profile-form__button', { isEditButton });
+  const editBtnClassName = cn('profile-form__button', {
+    'profile-form__isEdit__button': isEditButton,
+  });
 
   const isInputFirstName = firstNameProfile || !isShowInput;
   const isInputLastName = lastNameProfile || !isShowInput;

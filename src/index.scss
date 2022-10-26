@@ -19,3 +19,17 @@ a {
     opacity: 0.1;
   }
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+button {
+  cursor: pointer;
+}
+
+.field_decoration-line {
+  text-decoration-line: line-through;
+}

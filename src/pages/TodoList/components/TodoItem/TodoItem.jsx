@@ -62,7 +62,9 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
-  const inpntClassName = cn('todo-element__input', { inputDecoration: isDone });
+  const inpntClassName = cn('todo-element__input', {
+    'field_decoration-line': isDone,
+  });
 
   return (
     <li className="todo-element">

@@ -84,7 +84,9 @@ export const SinglePage = () => {
     }
   }, [title]);
 
-  const textareaClassName = cn('single-page__field__textarea', { textareaDecoration: isDone });
+  const textareaClassName = cn('single-page__field__textarea', {
+    'field_decoration-line': isDone,
+  });
 
   return (
     <>

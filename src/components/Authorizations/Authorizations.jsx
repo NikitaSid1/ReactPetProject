@@ -57,8 +57,8 @@ export const Authorizations = ({
       </Formik>
 
       <img className="authorisation__img" src={pageBackgroundImg} alt="authorisationImg" />
-      <Link className="link" to={switchPageBtnRoute}>
-        <button type="button" className="authorisation__form__button link__btn">
+      <Link className="authorisation__link" to={switchPageBtnRoute}>
+        <button type="button" className="authorisation__form__button authorisation__btn">
           {switchPageBtnLabel}
         </button>
       </Link>
