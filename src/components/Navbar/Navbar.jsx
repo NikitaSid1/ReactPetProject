@@ -7,7 +7,8 @@ import './index.scss';
 export const Navbar = () => {
   const history = useHistory();
 
-  const redirect = () => {
+  const handlerLogout = () => {
+    localStorage.removeItem('myJWT');
     history.push(Routes.Index);
   };
 
@@ -25,14 +26,7 @@ export const Navbar = () => {
         To-Do List
       </NavLink>
 
-      <button
-        type="button"
-        className="navbar__logout"
-        onClick={() => {
-          localStorage.removeItem('myJWT');
-          redirect();
-        }}
-      >
+      <button type="button" className="navbar__logout" onClick={handlerLogout}>
         LOGOUT
       </button>
     </nav>

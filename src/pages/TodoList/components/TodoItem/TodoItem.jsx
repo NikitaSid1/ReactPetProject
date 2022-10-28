@@ -20,12 +20,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
 
   const { request } = useJWTAccess();
 
-  const onDelete = async (todoId) => {
+  const handlerOnDelete = async () => {
     try {
       await request({
         url: 'http://localhost:4040/user/todo-list',
         method: 'delete',
-        data: { todoId },
+        data: { todoId: id },
       });
 
       getTodoListItems();
@@ -34,12 +34,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
-  const onChecked = async (todoId, isTodoDone) => {
+  const handlerOnChecked = async () => {
     try {
       await request({
         url: 'http://localhost:4040/user/todo-list/edit-is-done',
         method: 'put',
-        data: { todoId, isDone: !isTodoDone },
+        data: { todoId: id, isDone: !isDone },
       });
 
       getTodoListItems();
@@ -62,6 +62,17 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
+  const handlerOnEdit = () => {
+    setDisabled(!disabled);
+    if (!disabled) {
+      onEdit(id);
+    }
+  };
+
+  const handleFollowNextPage = () => {
+    history.push(Routes.getSinglePage(id));
+  };
+
   const inputClassName = cn('todo-element__input', {
     'field_decoration-line': isDone,
   });
@@ -80,17 +91,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
         type="button"
         className="todo-element__edit"
         name="todoElement"
-        onClick={() => {
-          setDisabled(!disabled);
-          if (!disabled) {
-            onEdit(id);
-          }
-        }}
+        onClick={handlerOnEdit}
       >
         <img src={editButtonImg} alt="editButton" />
       </button>
 
-      <button type="button" className="todo-element__delete" onClick={() => onDelete(id)}>
+      <button type="button" className="todo-element__delete" onClick={handlerOnDelete}>
         <img src={deleteButtonImg} alt="delete" />
       </button>
 
@@ -99,16 +105,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
           className="todo-element__checkbox"
           type="checkbox"
           checked={isDone}
-          onChange={() => onChecked(id, isDone)}
+          onChange={handlerOnChecked}
         />
         <span className="todo-element__checkmark" />
       </label>
 
-      <button
-        type="button"
-        className="todo-element__next-page"
-        onClick={() => history.push(Routes.getSinglePage(id))}
-      >
+      <button type="button" className="todo-element__next-page" onClick={handleFollowNextPage}>
         <img src={nextPageImg} alt="next-page" />
       </button>
     </li>
