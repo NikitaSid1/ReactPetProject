@@ -58,7 +58,7 @@ export const Authorizations = ({
 
       <img className="authorisation__img" src={pageBackgroundImg} alt="authorisationImg" />
       <Link className="authorisation__link" to={switchPageBtnRoute}>
-        <button type="button" className="authorisation__form__button authorisation__btn">
+        <button type="button" className="authorisation__form__button">
           {switchPageBtnLabel}
         </button>
       </Link>
