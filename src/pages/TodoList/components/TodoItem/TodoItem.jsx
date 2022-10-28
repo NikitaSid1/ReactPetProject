@@ -62,14 +62,14 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
     }
   };
 
-  const inpntClassName = cn('todo-element__input', {
+  const inputClassName = cn('todo-element__input', {
     'field_decoration-line': isDone,
   });
 
   return (
     <li className="todo-element">
       <input
-        className={inpntClassName}
+        className={inputClassName}
         type="text"
         disabled={disabled}
         name="todoElement"
@@ -94,7 +94,7 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
         <img src={deleteButtonImg} alt="delete" />
       </button>
 
-      <label className="containerLabel">
+      <label>
         <input
           className="todo-element__checkbox"
           type="checkbox"

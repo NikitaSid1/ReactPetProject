@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
 import { FormField } from '../FormField';
-import { SkeletonField } from '../SkeletonField';
+import { FormSkeleton } from '../FormSkeleton';
 
 export const ProfileForm = ({
   formButtonName,
@@ -88,7 +88,7 @@ export const ProfileForm = ({
         </Formik>
       )}
 
-      {!emailProfile && <SkeletonField />}
+      {!emailProfile && <FormSkeleton />}
     </>
   );
 };
