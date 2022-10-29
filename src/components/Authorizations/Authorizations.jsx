@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
 import { useApi } from '../../hooks/httphook';
-import { initialValues, LoginSchema, InputText } from './utils';
+import { InputField } from './components';
+import { initialValues } from './constants';
+import { LoginSchema } from './utils';
 import { Routes } from '../../routes/constants';
 
 import './index.scss';
@@ -47,8 +49,8 @@ export const Authorizations = ({
         <Form className={formClassName}>
           <h3 className="authorisation__form__text">{pageNameLabel}</h3>
 
-          <InputText placeholder="Email" type="email" name="email" />
-          <InputText placeholder="Password" type="password" name="password" autoComplete="on" />
+          <InputField placeholder="Email" type="email" name="email" />
+          <InputField placeholder="Password" type="password" name="password" autoComplete="on" />
 
           <button className="authorisation__form__button" type="submit">
             {pageNameLabel}
@@ -57,8 +59,8 @@ export const Authorizations = ({
       </Formik>
 
       <img className="authorisation__img" src={pageBackgroundImg} alt="authorisationImg" />
-      <Link className="link" to={switchPageBtnRoute}>
-        <button type="button" className="authorisation__form__button link__btn">
+      <Link className="authorisation__link" to={switchPageBtnRoute}>
+        <button type="button" className="authorisation__form__button">
           {switchPageBtnLabel}
         </button>
       </Link>

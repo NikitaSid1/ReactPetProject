@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Login, Registration, Profile, TodoList, SinglePage, ProtectedRoute } from '../pages';
-
 import { Routes } from './constants';
 
 export const AppRoutes = () => (

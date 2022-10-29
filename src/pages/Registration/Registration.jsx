@@ -10,6 +10,6 @@ export const Registration = () => (
     switchPageBtnLabel="Login"
     pageBackgroundImg={signUpImg}
     switchPageBtnRoute={Routes.Index}
-    formClassName="authorisation__form reverse"
+    formClassName="authorisation__form authorisation__reverse"
   />
 );

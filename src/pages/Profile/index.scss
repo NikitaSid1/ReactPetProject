@@ -1,56 +1,36 @@
-.container {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-
-.isEditButton {
-  position: absolute;
-  bottom: 50px;
-}
-
-.skeletonInput {
-  width: 450px;
-  height: 42px;
-  margin-bottom: 25px;
-}
-.skeletonLabel {
-  width: 450px;
-  height: 30px;
-}
-
 .profile-form {
   position: relative;
 
-  width: 600px;
-  height: 540px;
-  margin-top: 15px;
+  width: 37.5rem;
+  height: 33.75rem;
+  margin-top: 0.9rem;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 40px;
+  border-radius: 2.5rem;
 
   display: flex;
   align-items: center;
   flex-direction: column;
 
   &__text {
-    font-size: 48px;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin: 15px 0;
+    margin: 0.9rem 0;
     color: #feede1;
   }
 
   &__button {
-    width: 250px;
-    height: 50px;
+    width: 15.625rem;
+    height: 3.125rem;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 1.25rem;
+    font-size: 1rem;
 
     align-self: center;
 
     color: #feede1;
     background-color: #462730;
 
-    border-radius: 40px;
+    border-radius: 2.5rem;
     border: none;
   }
 
@@ -63,27 +43,43 @@
     }
 
     &__label {
-      font-size: 24px;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #feede1;
       align-self: baseline;
     }
 
     &__input {
-      width: 450px;
-      height: 42px;
+      width: 28.125rem;
+      height: 2.625rem;
 
-      margin-bottom: 25px;
-      padding: 13px 18px;
+      margin-bottom: 1.562rem;
+      padding: 0.75rem 1.125rem;
 
       box-sizing: border-box;
-      border: 1px solid #b9b9b9;
-      border-radius: 5px;
+      border: 0.062rem solid #b9b9b9;
+      border-radius: 0.312rem;
       background: transparent;
 
       font-weight: 400;
-      font-size: 24px;
+      font-size: 1rem;
       color: #feede1;
     }
+  }
+
+  &__skeletonInput {
+    width: 28.125rem;
+    height: 2.625rem;
+    margin-bottom: 1.562rem;
+  }
+
+  &__skeletonLabel {
+    width: 28.125rem;
+    height: 1.875rem;
+  }
+
+  &__isEdit__button {
+    position: absolute;
+    bottom: 3.125rem;
   }
 }

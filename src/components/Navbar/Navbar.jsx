@@ -7,27 +7,26 @@ import './index.scss';
 export const Navbar = () => {
   const history = useHistory();
 
-  const redirect = () => {
+  const handlerLogout = () => {
+    localStorage.removeItem('myJWT');
     history.push(Routes.Index);
   };
 
   return (
     <nav className="navbar">
-      <NavLink exact to={Routes.Profile} className="navbar__link profile" activeClassName="active">
+      <NavLink
+        exact
+        to={Routes.Profile}
+        className="navbar__link navbar__profile-link"
+        activeClassName="active"
+      >
         Profile
       </NavLink>
-      <NavLink exact to={Routes.TodoList} className="navbar__link todo" activeClassName="active">
+      <NavLink exact to={Routes.TodoList} className="navbar__link" activeClassName="active">
         To-Do List
       </NavLink>
 
-      <button
-        type="button"
-        className="navbar__logout"
-        onClick={() => {
-          localStorage.removeItem('myJWT');
-          redirect();
-        }}
-      >
+      <button type="button" className="navbar__logout" onClick={handlerLogout}>
         LOGOUT
       </button>
     </nav>

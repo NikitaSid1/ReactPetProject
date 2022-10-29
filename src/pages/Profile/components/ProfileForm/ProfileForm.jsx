@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import { useJWTAccess } from '../../../../hooks/httphook';
 import { FormField } from '../FormField';
-import { SkeletonField } from '../SkeletonField';
+import { FormSkeleton } from '../FormSkeleton';
 
 export const ProfileForm = ({
   formButtonName,
@@ -51,7 +51,9 @@ export const ProfileForm = ({
     lastNameProfile,
   };
 
-  const editBtnClassName = cn('profile-form__button', { isEditButton });
+  const editBtnClassName = cn('profile-form__button', {
+    'profile-form__isEdit__button': isEditButton,
+  });
 
   const isInputFirstName = firstNameProfile || !isShowInput;
   const isInputLastName = lastNameProfile || !isShowInput;
@@ -86,7 +88,7 @@ export const ProfileForm = ({
         </Formik>
       )}
 
-      {!emailProfile && <SkeletonField />}
+      {!emailProfile && <FormSkeleton />}
     </>
   );
 };

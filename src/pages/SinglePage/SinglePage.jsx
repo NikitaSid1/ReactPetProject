@@ -35,7 +35,7 @@ export const SinglePage = () => {
     }
   };
 
-  const onDelete = async () => {
+  const handlerOnDelete = async () => {
     try {
       await request({
         url: 'http://localhost:4040/user/todo-list',
@@ -49,7 +49,7 @@ export const SinglePage = () => {
     }
   };
 
-  const onChecked = async () => {
+  const handlerOnChecked = async () => {
     try {
       await request({
         url: 'http://localhost:4040/user/todo-list/edit-is-done',
@@ -62,7 +62,7 @@ export const SinglePage = () => {
     }
   };
 
-  const onEdit = async () => {
+  const handlerOnEdit = async () => {
     try {
       await request({
         url: 'http://localhost:4040/user/todo-list/edit-title',
@@ -80,34 +80,26 @@ export const SinglePage = () => {
 
   React.useEffect(() => {
     if (title !== initialTitle) {
-      onEdit();
+      handlerOnEdit();
     }
   }, [title]);
 
-  const textareaClassName = cn('single-page__field__textarea', { textareaDecoration: isDone });
+  const textareaClassName = cn('single-page__field__textarea', {
+    'field_decoration-line': isDone,
+  });
 
   return (
     <>
       <Navbar />
       <main className="single-page">
         <div className="single-page__buttons">
-          <button type="button" className="single-page__buttons__done" onClick={() => onChecked()}>
+          <button type="button" className="single-page__buttons__done" onClick={handlerOnChecked}>
             DONE
           </button>
-          <button
-            type="button"
-            className="single-page__buttons__delete"
-            onClick={() => {
-              onDelete();
-            }}
-          >
+          <button type="button" className="single-page__buttons__delete" onClick={handlerOnDelete}>
             DELETE
           </button>
-          <button
-            type="button"
-            className="single-page__buttons__go-back"
-            onClick={() => history.goBack()}
-          >
+          <button type="button" className="single-page__buttons__go-back" onClick={history.goBack}>
             GO BACK
           </button>
         </div>
@@ -122,7 +114,7 @@ export const SinglePage = () => {
               setTitle(event.target.value);
 
               if (!event.target.value) {
-                onDelete();
+                handlerOnDelete();
               }
             }}
           />

@@ -1,11 +1,6 @@
-.navDisable {
-  pointer-events: none;
-  opacity: 0.4;
-}
-
 .navbar {
   position: relative;
-  height: 40px;
+  height: 2.5rem;
   background: rgba(255, 255, 255, 0.2);
 
   display: grid;
@@ -13,27 +8,31 @@
   align-content: center;
 
   &__link {
-    font-size: 24px;
+    font-size: 1.25rem;
     color: #feede1;
-    margin: 0 20px;
+    margin: 0 1.25rem;
     font-weight: 500;
+  }
+
+  &__profile-link {
+    justify-self: end;
   }
 
   &__logout {
     position: absolute;
-    right: 10px;
+    right: 0.625rem;
 
-    width: 150px;
-    height: 30px;
+    width: 9.375rem;
+    height: 1.875rem;
     align-self: center;
 
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
 
     color: #feede1;
     background-color: #462730;
 
-    border-radius: 40px;
+    border-radius: 2.5rem;
     border: none;
   }
 
@@ -42,12 +41,4 @@
     color: linen;
     opacity: 0.6;
   }
-}
-
-.profile {
-  justify-self: end;
-}
-
-.todo {
-  justify-self: start;
 }

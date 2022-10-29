@@ -21,6 +21,7 @@ export const useApi = () => {
       throw new Error(e);
     }
   };
+
   return { request };
 };
 
@@ -48,5 +49,6 @@ export const useJWTAccess = () => {
       throw new Error(e);
     }
   };
+
   return { request };
 };

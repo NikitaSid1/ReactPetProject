@@ -58,7 +58,7 @@ export const TodoList = () => {
   return (
     <>
       <Navbar />
-      <section className="todo-section">
+      <section className="container todo-section">
         <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
           <Form className="todo-form">
             <Field

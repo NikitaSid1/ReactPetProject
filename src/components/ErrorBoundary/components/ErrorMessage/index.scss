@@ -1,0 +1,15 @@
+.error-img {
+  display: block;
+  width: 15.625rem;
+  height: 15.625rem;
+  object-fit: contain;
+  margin: 0 auto;
+  margin-top: 2.25rem;
+}
+
+.error-message {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(215, 13, 13);
+}
