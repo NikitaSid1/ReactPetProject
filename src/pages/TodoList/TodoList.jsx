@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../hooks/httphook';
+import { requestTodo } from '../../services';
 import { TodoItem } from './components/TodoItem';
 import { Navbar } from '../../components/Navbar';
 
@@ -11,16 +11,13 @@ import addTodoImg from './assets/btnAddTodo.svg';
 import './index.scss';
 
 export const TodoList = () => {
-  const { request } = useJWTAccess();
-
   const [todoText, setTodoText] = React.useState('');
   const [todoItems, setTodoItems] = React.useState(null);
 
   const getTodoListItems = async () => {
     try {
-      const { data } = await request({
-        url: 'http://localhost:4040/user/todo-list',
-        method: 'get',
+      const { data } = await requestTodo({
+        url: '/user/todo-list',
       });
       setTodoItems(data.entity);
     } catch (e) {
@@ -34,8 +31,8 @@ export const TodoList = () => {
 
   const handlerOnSubmit = async (values, { resetForm }) => {
     try {
-      const { data } = await request({
-        url: 'http://localhost:4040/user/todo-list',
+      const { data } = await requestTodo({
+        url: '/user/todo-list',
         method: 'post',
         data: { title: values.todoText },
       });

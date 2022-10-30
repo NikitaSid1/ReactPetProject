@@ -5,7 +5,7 @@ import loginImg from './assets/login.svg';
 
 export const Login = () => (
   <Authorizations
-    requestUrl="http://localhost:4040/login"
+    requestUrl="/login"
     pageNameLabel="Login"
     switchPageBtnLabel="Sign Up"
     pageBackgroundImg={loginImg}

@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
-import { useApi } from '../../hooks/httphook';
+import { requestTodo } from '../../services';
 import { InputField } from './components';
 import { initialValues } from './constants';
 import { LoginSchema } from './utils';
@@ -21,15 +21,15 @@ export const Authorizations = ({
 }) => {
   const history = useHistory();
 
-  const { request } = useApi();
-
   const handlerOnSubmit = async ({ email, password }, { resetForm }) => {
     try {
-      await request({
+      const { data } = await requestTodo({
         url: requestUrl,
         method: 'post',
         data: { email, password },
       });
+
+      localStorage.setItem('myJWT', data.entity);
 
       history.push(Routes.Profile);
     } catch (e) {

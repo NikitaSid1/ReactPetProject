@@ -4,15 +4,13 @@ import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import cn from 'classnames';
 
-import { useJWTAccess } from '../../hooks/httphook';
+import { requestTodo } from '../../services';
 import { Navbar } from '../../components/Navbar';
 import { Routes } from '../../routes/constants';
 
 import './index.scss';
 
 export const SinglePage = () => {
-  const { request } = useJWTAccess();
-
   const { id } = useParams();
   const history = useHistory();
 
@@ -22,9 +20,8 @@ export const SinglePage = () => {
 
   const getTitle = async () => {
     try {
-      const { data } = await request({
-        url: `http://localhost:4040/user/todo-list/${id}`,
-        method: 'get',
+      const { data } = await requestTodo({
+        url: `/user/todo-list/${id}`,
       });
 
       setIsDone(data.entity.isDone);
@@ -37,8 +34,8 @@ export const SinglePage = () => {
 
   const handlerOnDelete = async () => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list',
+      await requestTodo({
+        url: '/user/todo-list',
         method: 'delete',
         data: { todoId: id },
       });
@@ -51,8 +48,8 @@ export const SinglePage = () => {
 
   const handlerOnChecked = async () => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list/edit-is-done',
+      await requestTodo({
+        url: '/user/todo-list/edit-is-done',
         method: 'put',
         data: { todoId: id, isDone: !isDone },
       });
@@ -64,8 +61,8 @@ export const SinglePage = () => {
 
   const handlerOnEdit = async () => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list/edit-title',
+      await requestTodo({
+        url: '/user/todo-list/edit-title',
         method: 'post',
         data: { todoId: id, title },
       });

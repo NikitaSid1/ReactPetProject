@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Formik, Form } from 'formik';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
+import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../../../hooks/httphook';
-import { FormField } from '../FormField';
+import { requestTodo } from '../../../../services';
 import { FormSkeleton } from '../FormSkeleton';
+import { FormField } from '../FormField';
 
 export const ProfileForm = ({
   formButtonName,
@@ -18,8 +18,6 @@ export const ProfileForm = ({
   handleButtonOnClick = () => {},
   handlerOnSubmit = () => {},
 }) => {
-  const { request } = useJWTAccess();
-
   const [emailProfile, setEmailProfile] = React.useState('');
   const [firstNameProfile, setFirstNameProfile] = React.useState('');
   const [lastNameProfile, setLastNameProfile] = React.useState('');
@@ -27,9 +25,8 @@ export const ProfileForm = ({
   React.useEffect(() => {
     const getProfileDate = async () => {
       try {
-        const { data } = await request({
-          url: 'http://localhost:4040/user/profile',
-          method: 'get',
+        const { data } = await requestTodo({
+          url: '/user/profile',
         });
 
         const { email, firstName, lastName } = data.entity;
