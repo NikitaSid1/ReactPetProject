@@ -1,4 +1,4 @@
-import { Authorizations } from 'components/Authorizations/Authorizations';
+import { Authorizations } from 'components/Authorizations';
 import { Routes } from 'routes/constants';
 
 import loginImg from './assets/login.svg';
