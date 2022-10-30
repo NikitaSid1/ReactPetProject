@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 
+import { Routes } from 'routes/constants';
 import { ProfileForm } from '../ProfileForm';
-import { Routes } from '../../../../routes/constants';
 
 export const FormView = () => {
   const history = useHistory();

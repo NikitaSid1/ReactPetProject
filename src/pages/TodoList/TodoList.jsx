@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
 
-import { requestTodo } from '../../services';
+import { requestTodo } from 'services';
+import { Navbar } from 'components/Navbar';
 import { TodoItem } from './components/TodoItem';
-import { Navbar } from '../../components/Navbar';
 
 import addTodoImg from './assets/btnAddTodo.svg';
 

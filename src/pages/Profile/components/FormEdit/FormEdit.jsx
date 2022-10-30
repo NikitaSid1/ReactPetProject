@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Routes } from '../../../../routes/constants';
-import { requestTodo } from '../../../../services';
+import { Routes } from 'routes/constants';
+import { requestTodo } from 'services';
 import { ProfileForm } from '../ProfileForm';
 
 export const FormEdit = () => {

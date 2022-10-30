@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { requestTodo } from '../../../../services';
-import { Routes } from '../../../../routes/constants';
+import { requestTodo } from 'services';
+import { Routes } from 'routes/constants';
 
 import editButtonImg from './assets/editButton.svg';
 import deleteButtonImg from './assets/deleteButton.svg';

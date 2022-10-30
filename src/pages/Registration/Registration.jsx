@@ -1,5 +1,5 @@
-import { Authorizations } from '../../components/Authorizations/Authorizations';
-import { Routes } from '../../routes/constants';
+import { Authorizations } from 'components/Authorizations/Authorizations';
+import { Routes } from 'routes/constants';
 
 import signUpImg from './assets/signUp.svg';
 

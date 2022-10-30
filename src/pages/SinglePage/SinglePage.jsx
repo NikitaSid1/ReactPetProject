@@ -4,9 +4,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import cn from 'classnames';
 
-import { requestTodo } from '../../services';
-import { Navbar } from '../../components/Navbar';
-import { Routes } from '../../routes/constants';
+import { requestTodo } from 'services';
+import { Navbar } from 'components/Navbar';
+import { Routes } from 'routes/constants';
 
 import './index.scss';
 

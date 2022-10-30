@@ -3,11 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
-import { requestTodo } from '../../services';
+import { requestTodo } from 'services';
+import { Routes } from 'routes/constants';
 import { InputField } from './components';
 import { initialValues } from './constants';
 import { LoginSchema } from './utils';
-import { Routes } from '../../routes/constants';
 
 import './index.scss';
 

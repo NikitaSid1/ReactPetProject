@@ -1,6 +1,6 @@
 import { NavLink, useHistory } from 'react-router-dom';
 
-import { Routes } from '../../routes/constants';
+import { Routes } from 'routes/constants';
 
 import './index.scss';
 

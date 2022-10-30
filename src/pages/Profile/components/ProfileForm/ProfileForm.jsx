@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
 
-import { requestTodo } from '../../../../services';
+import { requestTodo } from 'services';
 import { FormSkeleton } from '../FormSkeleton';
 import { FormField } from '../FormField';
 
