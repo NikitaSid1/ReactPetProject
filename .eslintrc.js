@@ -35,6 +35,7 @@ module.exports = {
       },
     ],
     'require-await': RULE_ERROR,
+    'import/no-unresolved': RULE_OFF,
   },
 
   extends: ['plugin:react/recommended', 'airbnb'],

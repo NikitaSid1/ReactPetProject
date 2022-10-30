@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useJWTAccess } from '../../../../hooks/httphook';
-import { Routes } from '../../../../routes/constants';
+import { Routes } from 'routes/constants';
+import { requestTodo } from 'services';
 import { ProfileForm } from '../ProfileForm';
 
 export const FormEdit = () => {
@@ -12,12 +12,10 @@ export const FormEdit = () => {
     history.push(Routes.Profile);
   };
 
-  const { request } = useJWTAccess();
-
   const handlerOnSubmit = async ({ firstNameProfile, lastNameProfile }) => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/profile',
+      await requestTodo({
+        url: '/user/profile',
         method: 'put',
         data: { firstName: firstNameProfile, lastName: lastNameProfile },
       });

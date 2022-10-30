@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { useJWTAccess } from '../../../../hooks/httphook';
-import { Routes } from '../../../../routes/constants';
+import { requestTodo } from 'services';
+import { Routes } from 'routes/constants';
 
 import editButtonImg from './assets/editButton.svg';
 import deleteButtonImg from './assets/deleteButton.svg';
@@ -18,12 +18,10 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
   const [disabled, setDisabled] = React.useState(true);
   const history = useHistory();
 
-  const { request } = useJWTAccess();
-
   const handlerOnDelete = async () => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list',
+      await requestTodo({
+        url: '/user/todo-list',
         method: 'delete',
         data: { todoId: id },
       });
@@ -36,8 +34,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
 
   const handlerOnChecked = async () => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list/edit-is-done',
+      await requestTodo({
+        url: '/user/todo-list/edit-is-done',
         method: 'put',
         data: { todoId: id, isDone: !isDone },
       });
@@ -50,8 +48,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
 
   const onEdit = async (todoId) => {
     try {
-      await request({
-        url: 'http://localhost:4040/user/todo-list/edit-title',
+      await requestTodo({
+        url: '/user/todo-list/edit-title',
         method: 'post',
         data: { todoId, title: name },
       });

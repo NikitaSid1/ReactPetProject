@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router-dom';
 
+import { Routes } from 'routes/constants';
+import { Navbar } from 'components/Navbar';
 import { FormView, FormEdit } from './components';
-import { Routes } from '../../routes/constants';
-import { Navbar } from '../../components/Navbar';
 
 import './index.scss';
 
