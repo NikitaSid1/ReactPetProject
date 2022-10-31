@@ -9,6 +9,7 @@ import { FormSkeleton } from '../FormSkeleton';
 import { FormField } from '../FormField';
 
 export const ProfileForm = ({
+  isDisabledSubmitButton = false,
   formButtonName,
   isSubmitButton,
   isInputDisabled,
@@ -21,9 +22,11 @@ export const ProfileForm = ({
   const [emailProfile, setEmailProfile] = React.useState('');
   const [firstNameProfile, setFirstNameProfile] = React.useState('');
   const [lastNameProfile, setLastNameProfile] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     const getProfileDate = async () => {
+      setIsLoading(true);
       try {
         const { data } = await requestTodo({
           url: '/user/profile',
@@ -36,6 +39,8 @@ export const ProfileForm = ({
         setLastNameProfile(lastName);
       } catch (e) {
         toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -73,8 +78,9 @@ export const ProfileForm = ({
 
               <button
                 type={isSubmitButton ? 'submit' : 'button'}
-                className={editBtnClassName}
                 onClick={handleButtonOnClick}
+                className={editBtnClassName || isLoading}
+                disabled={isDisabledSubmitButton}
               >
                 {formButtonName}
               </button>

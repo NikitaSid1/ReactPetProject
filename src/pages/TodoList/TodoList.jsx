@@ -11,10 +11,12 @@ import addTodoImg from './assets/btnAddTodo.svg';
 import './index.scss';
 
 export const TodoList = () => {
-  const [todoText, setTodoText] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
   const [todoItems, setTodoItems] = React.useState(null);
+  const [todoText, setTodoText] = React.useState('');
 
   const getTodoListItems = async () => {
+    setIsLoading(true);
     try {
       const { data } = await requestTodo({
         url: '/user/todo-list',
@@ -22,6 +24,8 @@ export const TodoList = () => {
       setTodoItems(data.entity);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,8 +68,9 @@ export const TodoList = () => {
               name="todoText"
               type="text"
               placeholder="New todo"
+              disabled={isLoading}
             />
-            <button className="todo-form__btn-add-todo" type="submit">
+            <button className="todo-form__btn-add-todo" type="submit" disabled={isLoading}>
               <img src={addTodoImg} alt="add-todo" />
             </button>
           </Form>
@@ -80,6 +85,8 @@ export const TodoList = () => {
                 id={el._id}
                 isDone={el.isDone}
                 getTodoListItems={getTodoListItems}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
               />
             ))}
         </ul>

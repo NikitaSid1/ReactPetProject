@@ -13,12 +13,14 @@ import nextPageImg from './assets/nextPage.svg';
 
 import './index.scss';
 
-export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
-  const [name, setName] = React.useState(text);
+export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsLoading }) => {
   const [disabled, setDisabled] = React.useState(true);
+  const [name, setName] = React.useState(text);
+
   const history = useHistory();
 
   const handlerOnDelete = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list',
@@ -29,10 +31,13 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
       getTodoListItems();
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnChecked = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-is-done',
@@ -43,10 +48,13 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
       getTodoListItems();
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const onEdit = async (todoId) => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-title',
@@ -57,6 +65,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
       getTodoListItems();
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -90,11 +100,17 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
         className="todo-element__edit"
         name="todoElement"
         onClick={handlerOnEdit}
+        disabled={isLoading}
       >
         <img src={editButtonImg} alt="editButton" />
       </button>
 
-      <button type="button" className="todo-element__delete" onClick={handlerOnDelete}>
+      <button
+        type="button"
+        className="todo-element__delete"
+        onClick={handlerOnDelete}
+        disabled={isLoading}
+      >
         <img src={deleteButtonImg} alt="delete" />
       </button>
 
@@ -108,7 +124,12 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems }) => {
         <span className="todo-element__checkmark" />
       </label>
 
-      <button type="button" className="todo-element__next-page" onClick={handleFollowNextPage}>
+      <button
+        type="button"
+        className="todo-element__next-page"
+        onClick={handleFollowNextPage}
+        disabled={isLoading}
+      >
         <img src={nextPageImg} alt="next-page" />
       </button>
     </li>

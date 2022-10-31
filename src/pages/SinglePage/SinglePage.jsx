@@ -16,9 +16,11 @@ export const SinglePage = () => {
 
   const [title, setTitle] = React.useState('');
   const [isDone, setIsDone] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [initialTitle, setInitialTitle] = React.useState('');
 
   const getTitle = async () => {
+    setIsLoading(true);
     try {
       const { data } = await requestTodo({
         url: `/user/todo-list/${id}`,
@@ -29,10 +31,13 @@ export const SinglePage = () => {
       setInitialTitle(data.entity.title);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnDelete = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list',
@@ -43,10 +48,13 @@ export const SinglePage = () => {
       history.push(Routes.TodoList);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnChecked = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-is-done',
@@ -56,10 +64,13 @@ export const SinglePage = () => {
       setIsDone(!isDone);
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnEdit = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-title',
@@ -68,6 +79,8 @@ export const SinglePage = () => {
       });
     } catch (e) {
       toast.error('Something Went Wrong 😢 \nPlease Try Again');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -90,13 +103,28 @@ export const SinglePage = () => {
       <Navbar />
       <main className="single-page">
         <div className="single-page__buttons">
-          <button type="button" className="single-page__buttons__done" onClick={handlerOnChecked}>
+          <button
+            type="button"
+            className="single-page__buttons__done"
+            disabled={isLoading}
+            onClick={handlerOnChecked}
+          >
             DONE
           </button>
-          <button type="button" className="single-page__buttons__delete" onClick={handlerOnDelete}>
+          <button
+            type="button"
+            className="single-page__buttons__delete"
+            disabled={isLoading}
+            onClick={handlerOnDelete}
+          >
             DELETE
           </button>
-          <button type="button" className="single-page__buttons__go-back" onClick={history.goBack}>
+          <button
+            type="button"
+            className="single-page__buttons__go-back"
+            disabled={isLoading}
+            onClick={history.goBack}
+          >
             GO BACK
           </button>
         </div>
@@ -107,6 +135,7 @@ export const SinglePage = () => {
             className={textareaClassName}
             debounceTimeout={300}
             value={title}
+            disabled={isLoading}
             onChange={(event) => {
               setTitle(event.target.value);
 
