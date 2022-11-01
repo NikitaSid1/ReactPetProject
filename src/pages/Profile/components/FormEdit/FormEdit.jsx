@@ -28,7 +28,7 @@ export const FormEdit = () => {
 
       redirect();
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }

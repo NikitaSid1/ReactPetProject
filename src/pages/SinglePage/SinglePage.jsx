@@ -33,7 +33,7 @@ export const SinglePage = () => {
       setTitle(data.entity.title);
       setInitialTitle(data.entity.title);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -50,7 +50,7 @@ export const SinglePage = () => {
 
       history.push(Routes.TodoList);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -66,7 +66,7 @@ export const SinglePage = () => {
       });
       setIsDone(!isDone);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -81,7 +81,7 @@ export const SinglePage = () => {
         data: { todoId: id, title },
       });
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }

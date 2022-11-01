@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
 import { Routes } from 'routes/constants';
-import { InputField } from './components';
+import { LanguageButtons } from 'components/LanguageButtons';
 import { initialValues } from './constants';
+import { InputField } from './components';
 import { LoginSchema } from './utils';
 
 import './index.scss';
@@ -23,6 +25,8 @@ export const Authorizations = ({
   const [isLoading, setIsLoading] = React.useState(false);
   const history = useHistory();
 
+  const { formatMessage } = useIntl();
+
   const handlerOnSubmit = async ({ email, password }, { resetForm }) => {
     setIsLoading(true);
     try {
@@ -36,7 +40,7 @@ export const Authorizations = ({
 
       history.push(Routes.Profile);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -52,11 +56,17 @@ export const Authorizations = ({
         onSubmit={handlerOnSubmit}
       >
         <Form className={formClassName}>
+          <LanguageButtons buttonsPositionNavbar={false} buttonsPositionAuthorization />
           <h3 className="authorisation__form__text">{pageNameLabel}</h3>
 
-          <InputField placeholder="Email" type="email" id="email" name="email" />
           <InputField
-            placeholder="Password"
+            placeholder={formatMessage({ id: 'authorization_email' })}
+            type="email"
+            id="email"
+            name="email"
+          />
+          <InputField
+            placeholder={formatMessage({ id: 'authorization_password' })}
             type="password"
             id="password"
             name="password"

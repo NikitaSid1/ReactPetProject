@@ -36,39 +36,6 @@
     border: none;
   }
 
-  &__section-buttons {
-    position: absolute;
-    left: 0.625rem;
-    align-self: center;
-
-    display: flex;
-  }
-
-  &__button-language {
-    width: 5rem;
-    height: 1.875rem;
-
-    margin-right: 0.3rem;
-
-    font-size: 1rem;
-    font-weight: 500;
-
-    color: #feede1;
-    background-color: #462730;
-
-    border: none;
-
-    &:first-child {
-      border-top-left-radius: 2.5rem;
-      border-bottom-left-radius: 2.5rem;
-    }
-
-    &:last-child {
-      border-top-right-radius: 2.5rem;
-      border-bottom-right-radius: 2.5rem;
-    }
-  }
-
   &:disabled {
     background-color: dimgrey;
     color: linen;

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
 import { Navbar } from 'components/Navbar';
 import { TodoItem } from './components/TodoItem';
-
-import addTodoImg from './assets/btnAddTodo.svg';
 
 import './index.scss';
 
@@ -14,6 +13,8 @@ export const TodoList = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [todoItems, setTodoItems] = React.useState(null);
   const [todoText, setTodoText] = React.useState('');
+
+  const { formatMessage } = useIntl();
 
   const getTodoListItems = async () => {
     setIsLoading(true);
@@ -23,7 +24,7 @@ export const TodoList = () => {
       });
       setTodoItems(data.entity);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +47,7 @@ export const TodoList = () => {
         getTodoListItems();
       }
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     }
 
     resetForm({ values: '' });
@@ -67,11 +68,11 @@ export const TodoList = () => {
               className="todo-form__input"
               name="todoText"
               type="text"
-              placeholder="New todo"
+              placeholder={formatMessage({ id: 'todoList_input' })}
               disabled={isLoading}
             />
             <button className="todo-form__btn-add-todo" type="submit" disabled={isLoading}>
-              <img src={addTodoImg} alt="add-todo" />
+              {formatMessage({ id: 'todoList_button' })}
             </button>
           </Form>
         </Formik>

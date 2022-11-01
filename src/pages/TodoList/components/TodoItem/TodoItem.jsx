@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
 import { Routes } from 'routes/constants';
@@ -19,6 +20,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
 
   const history = useHistory();
 
+  const { formatMessage } = useIntl();
+
   const handlerOnDelete = async () => {
     setIsLoading(true);
     try {
@@ -30,7 +33,7 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
 
       getTodoListItems();
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -47,7 +50,7 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
 
       getTodoListItems();
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +67,7 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
 
       getTodoListItems();
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
       setIsLoading(false);
     }

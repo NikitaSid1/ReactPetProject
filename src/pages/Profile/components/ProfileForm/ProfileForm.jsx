@@ -41,7 +41,7 @@ export const ProfileForm = ({
         setFirstNameProfile(firstName);
         setLastNameProfile(lastName);
       } catch (e) {
-        toast.error('Something Went Wrong 😢 \nPlease Try Again');
+        toast.error(formatMessage({ id: 'toast_error' }));
       } finally {
         setIsLoading(false);
       }

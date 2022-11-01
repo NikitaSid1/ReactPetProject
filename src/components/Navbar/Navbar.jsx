@@ -2,23 +2,15 @@ import * as React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
-import { useLanguageProvider } from 'services';
 import { Routes } from 'routes/constants';
-import { LOCALES } from 'i18n/locales';
+import { LanguageButtons } from 'components/LanguageButtons';
 
 import './index.scss';
 
 export const Navbar = () => {
-  const { formatMessage } = useIntl();
-  const { setLanguageLocale } = useLanguageProvider();
-
-  const languages = [
-    { name: 'English', code: LOCALES.ENGLISH },
-    { name: 'Ukrainian', code: LOCALES.UKRAINIAN },
-    { name: 'Russian', code: LOCALES.RUSSIAN },
-  ];
-
   const history = useHistory();
+
+  const { formatMessage } = useIntl();
 
   const handlerLogout = () => {
     localStorage.removeItem('myJWT');
@@ -27,19 +19,7 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <section className="navbar__section-buttons">
-        {languages.map(({ name, code }) => (
-          <button
-            key={code}
-            type="button"
-            className="navbar__button-language"
-            onClick={() => setLanguageLocale(code)}
-          >
-            {name}
-          </button>
-        ))}
-      </section>
-
+      <LanguageButtons buttonsPositionNavbar buttonsPositionAuthorization={false} />
       <NavLink
         exact
         to={Routes.Profile}

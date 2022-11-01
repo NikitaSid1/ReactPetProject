@@ -28,8 +28,13 @@ a {
 
 button {
   cursor: pointer;
+
   &:disabled {
     opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
   }
 }
 
