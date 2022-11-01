@@ -54,8 +54,14 @@ export const Authorizations = ({
         <Form className={formClassName}>
           <h3 className="authorisation__form__text">{pageNameLabel}</h3>
 
-          <InputField placeholder="Email" type="email" name="email" />
-          <InputField placeholder="Password" type="password" name="password" autoComplete="on" />
+          <InputField placeholder="Email" type="email" id="email" name="email" />
+          <InputField
+            placeholder="Password"
+            type="password"
+            id="password"
+            name="password"
+            autoComplete="on"
+          />
 
           <button className="authorisation__form__button" type="submit" disabled={isLoading}>
             {pageNameLabel}

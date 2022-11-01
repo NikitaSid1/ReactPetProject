@@ -3,6 +3,7 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
 import { FormSkeleton } from '../FormSkeleton';
@@ -19,10 +20,12 @@ export const ProfileForm = ({
   handleButtonOnClick = () => {},
   handlerOnSubmit = () => {},
 }) => {
-  const [emailProfile, setEmailProfile] = React.useState('');
   const [firstNameProfile, setFirstNameProfile] = React.useState('');
   const [lastNameProfile, setLastNameProfile] = React.useState('');
+  const [emailProfile, setEmailProfile] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+
+  const { formatMessage } = useIntl();
 
   React.useEffect(() => {
     const getProfileDate = async () => {
@@ -66,14 +69,26 @@ export const ProfileForm = ({
         <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
           <Form>
             <div className="profile-form__view">
-              <FormField label="Email" name="emailProfile" disabled />
+              <FormField
+                label={formatMessage({ id: 'profile_email' })}
+                name="emailProfile"
+                disabled
+              />
 
               {isInputFirstName && (
-                <FormField label="First Name" name="firstNameProfile" disabled={isInputDisabled} />
+                <FormField
+                  label={formatMessage({ id: 'profile_firstName' })}
+                  name="firstNameProfile"
+                  disabled={isInputDisabled}
+                />
               )}
 
               {isInputLastName && (
-                <FormField label="Last Name" name="lastNameProfile" disabled={isInputDisabled} />
+                <FormField
+                  label={formatMessage({ id: 'profile_lastName' })}
+                  name="lastNameProfile"
+                  disabled={isInputDisabled}
+                />
               )}
 
               <button

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 import cn from 'classnames';
 
 import { requestTodo } from 'services';
@@ -13,6 +14,8 @@ import './index.scss';
 export const SinglePage = () => {
   const { id } = useParams();
   const history = useHistory();
+
+  const { formatMessage } = useIntl();
 
   const [title, setTitle] = React.useState('');
   const [isDone, setIsDone] = React.useState(null);
@@ -109,7 +112,7 @@ export const SinglePage = () => {
             disabled={isLoading}
             onClick={handlerOnChecked}
           >
-            DONE
+            {formatMessage({ id: 'singlePage_button_done' })}
           </button>
           <button
             type="button"
@@ -117,7 +120,7 @@ export const SinglePage = () => {
             disabled={isLoading}
             onClick={handlerOnDelete}
           >
-            DELETE
+            {formatMessage({ id: 'singlePage_button_delete' })}
           </button>
           <button
             type="button"
@@ -125,7 +128,7 @@ export const SinglePage = () => {
             disabled={isLoading}
             onClick={history.goBack}
           >
-            GO BACK
+            {formatMessage({ id: 'singlePage_button_goBack' })}
           </button>
         </div>
 

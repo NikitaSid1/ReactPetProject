@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 
 body {
   font-size: 16px;
 
   background-color: #241722;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
 
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -24,7 +24,6 @@ a {
 .container {
   display: flex;
   justify-content: center;
-  width: 100vw;
 }
 
 button {

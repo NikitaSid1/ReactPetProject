@@ -7,6 +7,9 @@ export const InputField = ({ ...props }) => {
 
   return (
     <section className="authorisation__form__input-block">
+      <label className="authorisation__form__label" htmlFor={props.name}>
+        {props.placeholder}
+      </label>
       <input className="authorisation__form__input" {...props} {...field} />
       {isError && <div className="authorisation__form__error">{meta.error}</div>}
     </section>
