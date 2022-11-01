@@ -11,6 +11,7 @@ export const LanguageContext = React.createContext({
 
 export const LanguageProvider = ({ children }) => {
   const [languageLocale, setLanguageLocale] = React.useState(LOCALES.ENGLISH);
+
   const languageProviderData = React.useMemo(
     () => ({
       languageLocale,
