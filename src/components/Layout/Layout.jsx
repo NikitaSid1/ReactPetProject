@@ -5,7 +5,10 @@ import { Navbar } from './components';
 export const Layout = ({ children }) => {
   const { pathname } = useLocation();
 
-  if (pathname === '/' || pathname === '/registration') {
+  const login = '/';
+  const registration = '/registration';
+
+  if (pathname === login || pathname === registration) {
     return children;
   }
 
