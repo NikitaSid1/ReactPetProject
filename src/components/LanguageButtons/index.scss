@@ -1,0 +1,52 @@
+.language__section {
+  position: absolute;
+  align-self: center;
+  display: flex;
+}
+
+.language__section-left {
+  left: 0.625rem;
+}
+
+.language__button {
+  width: 6rem;
+  height: 1.875rem;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: #feede1;
+  background-color: #462730;
+
+  border: none;
+
+  border-right: 0.125rem solid #50454e;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.language__buttons-authorization {
+  width: 7rem;
+
+  &:first-child {
+    border-bottom-left-radius: 2.5rem;
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 2.5rem;
+  }
+}
+
+.language__buttons-navbar {
+  &:first-child {
+    border-top-left-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+  }
+
+  &:last-child {
+    border-top-right-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+  }
+}

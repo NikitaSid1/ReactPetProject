@@ -3,12 +3,14 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
 import { FormSkeleton } from '../FormSkeleton';
 import { FormField } from '../FormField';
 
 export const ProfileForm = ({
+  isDisabledSubmitButton = false,
   formButtonName,
   isSubmitButton,
   isInputDisabled,
@@ -18,12 +20,16 @@ export const ProfileForm = ({
   handleButtonOnClick = () => {},
   handlerOnSubmit = () => {},
 }) => {
-  const [emailProfile, setEmailProfile] = React.useState('');
   const [firstNameProfile, setFirstNameProfile] = React.useState('');
   const [lastNameProfile, setLastNameProfile] = React.useState('');
+  const [emailProfile, setEmailProfile] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const { formatMessage } = useIntl();
 
   React.useEffect(() => {
     const getProfileDate = async () => {
+      setIsLoading(true);
       try {
         const { data } = await requestTodo({
           url: '/user/profile',
@@ -35,7 +41,9 @@ export const ProfileForm = ({
         setFirstNameProfile(firstName);
         setLastNameProfile(lastName);
       } catch (e) {
-        toast.error('Something Went Wrong 😢 \nPlease Try Again');
+        toast.error(formatMessage({ id: 'toast_error' }));
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -61,20 +69,33 @@ export const ProfileForm = ({
         <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
           <Form>
             <div className="profile-form__view">
-              <FormField label="Email" name="emailProfile" disabled />
+              <FormField
+                label={formatMessage({ id: 'profile_email' })}
+                name="emailProfile"
+                disabled
+              />
 
               {isInputFirstName && (
-                <FormField label="First Name" name="firstNameProfile" disabled={isInputDisabled} />
+                <FormField
+                  label={formatMessage({ id: 'profile_firstName' })}
+                  name="firstNameProfile"
+                  disabled={isInputDisabled}
+                />
               )}
 
               {isInputLastName && (
-                <FormField label="Last Name" name="lastNameProfile" disabled={isInputDisabled} />
+                <FormField
+                  label={formatMessage({ id: 'profile_lastName' })}
+                  name="lastNameProfile"
+                  disabled={isInputDisabled}
+                />
               )}
 
               <button
                 type={isSubmitButton ? 'submit' : 'button'}
-                className={editBtnClassName}
                 onClick={handleButtonOnClick}
+                className={editBtnClassName || isLoading}
+                disabled={isDisabledSubmitButton}
               >
                 {formButtonName}
               </button>

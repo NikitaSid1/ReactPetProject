@@ -1,17 +1,18 @@
 import { Switch, Route } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { Routes } from 'routes/constants';
-import { Navbar } from 'components/Navbar';
 import { FormView, FormEdit } from './components';
 
 import './index.scss';
 
-export const Profile = () => (
-  <>
-    <Navbar />
+export const Profile = () => {
+  const { formatMessage } = useIntl();
+
+  return (
     <section className="container">
       <div className="profile-form">
-        <h3 className="profile-form__text">Profile</h3>
+        <h3 className="profile-form__text">{formatMessage({ id: 'profile_title' })}</h3>
 
         <Switch>
           <Route exact path={Routes.Profile}>
@@ -24,5 +25,5 @@ export const Profile = () => (
         </Switch>
       </div>
     </section>
-  </>
-);
+  );
+};

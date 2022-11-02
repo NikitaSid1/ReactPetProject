@@ -1,0 +1,33 @@
+{
+  "authorization_login": "Авторизоваться",
+  "authorization_signup": "Зарегистрироваться",
+  "authorization_email": "Електронный адрес",
+  "authorization_password": "Пароль",
+
+  "profile_title": "Профиль",
+  "profile_email": "Електронный адрес",
+  "profile_firstName": "Имя",
+  "profile_lastName": "Фамилия",
+  "profile_button_edit": "Изменить",
+  "profile_button_save": "Сохранить",
+  "profile_button_cancel": "Выйти",
+
+  "navbar_link_profile": "Профиль",
+  "navbar_link_todo": "Список задач",
+  "navbar_button_logout": "Выход",
+
+  "singlePage_button_done": "Выполнено",
+  "singlePage_button_delete": "Удалить",
+  "singlePage_button_goBack": "Вернуться",
+
+  "todoList_input": "Новая задача",
+  "todoList_button": "Добавить задачу",
+
+  "toast_error": "Что-то пошло не так 😢 \nПопытайтесь еще раз",
+  "toast_success_login": "Вы успешно вошли",
+  "toast_success_signup": "Вы успешно зарегестрировались",
+  "toast_success_edit": "Изменения успешно сохранены",
+  "toast_success_delete": "Задача успешно удалена",
+  "toast_success_isDone": "Задача успешно выполнена",
+  "toast_success_addTodo": "Задача успешно добавлена"
+}

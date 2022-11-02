@@ -2,10 +2,10 @@ import * as React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 import cn from 'classnames';
 
 import { requestTodo } from 'services';
-import { Navbar } from 'components/Navbar';
 import { Routes } from 'routes/constants';
 
 import './index.scss';
@@ -14,11 +14,15 @@ export const SinglePage = () => {
   const { id } = useParams();
   const history = useHistory();
 
+  const { formatMessage } = useIntl();
+
   const [title, setTitle] = React.useState('');
   const [isDone, setIsDone] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [initialTitle, setInitialTitle] = React.useState('');
 
   const getTitle = async () => {
+    setIsLoading(true);
     try {
       const { data } = await requestTodo({
         url: `/user/todo-list/${id}`,
@@ -28,11 +32,14 @@ export const SinglePage = () => {
       setTitle(data.entity.title);
       setInitialTitle(data.entity.title);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnDelete = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list',
@@ -41,12 +48,17 @@ export const SinglePage = () => {
       });
 
       history.push(Routes.TodoList);
+
+      toast.success(formatMessage({ id: 'toast_success_delete' }));
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnChecked = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-is-done',
@@ -54,12 +66,19 @@ export const SinglePage = () => {
         data: { todoId: id, isDone: !isDone },
       });
       setIsDone(!isDone);
+
+      if (!isDone) {
+        toast.success(formatMessage({ id: 'toast_success_isDone' }));
+      }
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handlerOnEdit = async () => {
+    setIsLoading(true);
     try {
       await requestTodo({
         url: '/user/todo-list/edit-title',
@@ -67,7 +86,9 @@ export const SinglePage = () => {
         data: { todoId: id, title },
       });
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,37 +107,50 @@ export const SinglePage = () => {
   });
 
   return (
-    <>
-      <Navbar />
-      <main className="single-page">
-        <div className="single-page__buttons">
-          <button type="button" className="single-page__buttons__done" onClick={handlerOnChecked}>
-            DONE
-          </button>
-          <button type="button" className="single-page__buttons__delete" onClick={handlerOnDelete}>
-            DELETE
-          </button>
-          <button type="button" className="single-page__buttons__go-back" onClick={history.goBack}>
-            GO BACK
-          </button>
-        </div>
+    <main className="single-page">
+      <div className="single-page__buttons">
+        <button
+          type="button"
+          className="single-page__buttons__done"
+          disabled={isLoading}
+          onClick={handlerOnChecked}
+        >
+          {formatMessage({ id: 'singlePage_button_done' })}
+        </button>
+        <button
+          type="button"
+          className="single-page__buttons__delete"
+          disabled={isLoading}
+          onClick={handlerOnDelete}
+        >
+          {formatMessage({ id: 'singlePage_button_delete' })}
+        </button>
+        <button
+          type="button"
+          className="single-page__buttons__go-back"
+          disabled={isLoading}
+          onClick={history.goBack}
+        >
+          {formatMessage({ id: 'singlePage_button_goBack' })}
+        </button>
+      </div>
 
-        <div className="single-page__field">
-          <DebounceInput
-            element="textarea"
-            className={textareaClassName}
-            debounceTimeout={300}
-            value={title}
-            onChange={(event) => {
-              setTitle(event.target.value);
+      <div className="single-page__field">
+        <DebounceInput
+          element="textarea"
+          className={textareaClassName}
+          debounceTimeout={300}
+          value={title}
+          disabled={isLoading}
+          onChange={(event) => {
+            setTitle(event.target.value);
 
-              if (!event.target.value) {
-                handlerOnDelete();
-              }
-            }}
-          />
-        </div>
-      </main>
-    </>
+            if (!event.target.value) {
+              handlerOnDelete();
+            }
+          }}
+        />
+      </div>
+    </main>
   );
 };

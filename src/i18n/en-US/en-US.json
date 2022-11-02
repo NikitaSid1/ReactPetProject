@@ -1,0 +1,33 @@
+{
+  "authorization_login": "Login",
+  "authorization_signup": "Sign Up",
+  "authorization_email": "Email",
+  "authorization_password": "Password",
+
+  "profile_title": "Profile",
+  "profile_email": "Email",
+  "profile_firstName": "First Name",
+  "profile_lastName": "Last Name",
+  "profile_button_edit": "Edit",
+  "profile_button_save": "Save",
+  "profile_button_cancel": "Cancel",
+
+  "navbar_link_profile": "Profile",
+  "navbar_link_todo": "To-Do List",
+  "navbar_button_logout": "Logout",
+
+  "singlePage_button_done": "Done",
+  "singlePage_button_delete": "Delete",
+  "singlePage_button_goBack": "Go Back",
+
+  "todoList_input": "New todo",
+  "todoList_button": "Add todo",
+
+  "toast_error": "Something Went Wrong 😢 \nPlease Try Again",
+  "toast_success_login": "You have successfully logged in",
+  "toast_success_signup": "You have successfully registered",
+  "toast_success_edit": "The changes were successfully saved",
+  "toast_success_delete": "The task was successfully deleted",
+  "toast_success_isDone": "Task completed successfully",
+  "toast_success_addTodo": "Task added successfully"
+}

@@ -35,18 +35,32 @@
     flex-direction: column;
 
     &__text {
-      margin-top: 3.125rem;
+      margin-top: 2rem;
       margin-bottom: 0;
       font-weight: 700;
       font-size: 1.5rem;
       color: #8d2932;
     }
 
+    &__input-block {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    &__label {
+      text-align: start;
+      color: #8d2932;
+      font-size: 1rem;
+      margin-top: 3.125rem;
+    }
+
     &__input {
-      margin-top: 4.375rem;
       width: 23.75rem;
       height: 3.75rem;
 
+      margin-top: 0.125rem;
       padding: 0.8rem 1.125rem;
       box-sizing: border-box;
       border: 0.062rem solid #b9b9b9;
@@ -58,23 +72,16 @@
       color: #808080;
     }
 
-    &__input-block {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     &__error {
       position: absolute;
       top: 8.5rem;
       font-size: 1rem;
-      text-align: center;
       color: red;
+      align-self: center;
     }
 
     &__button {
-      margin: 4rem 0;
+      margin-top: 4rem;
       width: 23.75rem;
       height: 3.75rem;
       background: #8d2932;

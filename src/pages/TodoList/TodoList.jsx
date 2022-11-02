@@ -1,27 +1,31 @@
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
-import { Navbar } from 'components/Navbar';
 import { TodoItem } from './components/TodoItem';
-
-import addTodoImg from './assets/btnAddTodo.svg';
 
 import './index.scss';
 
 export const TodoList = () => {
-  const [todoText, setTodoText] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
   const [todoItems, setTodoItems] = React.useState(null);
+  const [todoText, setTodoText] = React.useState('');
+
+  const { formatMessage } = useIntl();
 
   const getTodoListItems = async () => {
+    setIsLoading(true);
     try {
       const { data } = await requestTodo({
         url: '/user/todo-list',
       });
       setTodoItems(data.entity);
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -40,9 +44,11 @@ export const TodoList = () => {
 
       if (data.message === 'Ok') {
         getTodoListItems();
+
+        toast.success(formatMessage({ id: 'toast_success_addTodo' }));
       }
     } catch (e) {
-      toast.error('Something Went Wrong 😢 \nPlease Try Again');
+      toast.error(formatMessage({ id: 'toast_error' }));
     }
 
     resetForm({ values: '' });
@@ -53,37 +59,37 @@ export const TodoList = () => {
   };
 
   return (
-    <>
-      <Navbar />
-      <section className="container todo-section">
-        <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
-          <Form className="todo-form">
-            <Field
-              autoFocus
-              className="todo-form__input"
-              name="todoText"
-              type="text"
-              placeholder="New todo"
-            />
-            <button className="todo-form__btn-add-todo" type="submit">
-              <img src={addTodoImg} alt="add-todo" />
-            </button>
-          </Form>
-        </Formik>
+    <section className="container todo-section">
+      <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
+        <Form className="todo-form">
+          <Field
+            autoFocus
+            className="todo-form__input"
+            name="todoText"
+            type="text"
+            placeholder={formatMessage({ id: 'todoList_input' })}
+            disabled={isLoading}
+          />
+          <button className="todo-form__btn-add-todo" type="submit" disabled={isLoading}>
+            {formatMessage({ id: 'todoList_button' })}
+          </button>
+        </Form>
+      </Formik>
 
-        <ul className="todo-form__ul">
-          {todoItems &&
-            todoItems.map((el) => (
-              <TodoItem
-                text={el.title}
-                key={el._id}
-                id={el._id}
-                isDone={el.isDone}
-                getTodoListItems={getTodoListItems}
-              />
-            ))}
-        </ul>
-      </section>
-    </>
+      <ul className="todo-form__ul">
+        {todoItems &&
+          todoItems.map((el) => (
+            <TodoItem
+              text={el.title}
+              key={el._id}
+              id={el._id}
+              isDone={el.isDone}
+              getTodoListItems={getTodoListItems}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          ))}
+      </ul>
+    </section>
   );
 };

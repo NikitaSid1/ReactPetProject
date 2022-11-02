@@ -1,11 +1,16 @@
+import * as React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { Routes } from 'routes/constants';
+import { LanguageButtons } from 'components/LanguageButtons';
 
 import './index.scss';
 
 export const Navbar = () => {
   const history = useHistory();
+
+  const { formatMessage } = useIntl();
 
   const handlerLogout = () => {
     localStorage.removeItem('myJWT');
@@ -14,20 +19,21 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <LanguageButtons buttonsPositionNavbar buttonsPositionAuthorization={false} />
       <NavLink
         exact
         to={Routes.Profile}
         className="navbar__link navbar__profile-link"
         activeClassName="active"
       >
-        Profile
+        {formatMessage({ id: 'navbar_link_profile' })}
       </NavLink>
       <NavLink exact to={Routes.TodoList} className="navbar__link" activeClassName="active">
-        To-Do List
+        {formatMessage({ id: 'navbar_link_todo' })}
       </NavLink>
 
       <button type="button" className="navbar__logout" onClick={handlerLogout}>
-        LOGOUT
+        {formatMessage({ id: 'navbar_button_logout' })}
       </button>
     </nav>
   );
