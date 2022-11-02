@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Login, Registration, Profile, TodoList, SinglePage, ProtectedRoute } from 'pages';
+import { Layout } from 'components/Layout';
 import { Routes } from './constants';
 
 export const AppRoutes = () => (
@@ -16,15 +17,21 @@ export const AppRoutes = () => (
       </Route>
 
       <ProtectedRoute path={Routes.Profile}>
-        <Profile />
+        <Layout>
+          <Profile />
+        </Layout>
       </ProtectedRoute>
 
       <ProtectedRoute exact path={Routes.TodoList}>
-        <TodoList />
+        <Layout>
+          <TodoList />
+        </Layout>
       </ProtectedRoute>
 
       <ProtectedRoute exact path={Routes.getSinglePage()}>
-        <SinglePage />
+        <Layout>
+          <SinglePage />
+        </Layout>
       </ProtectedRoute>
     </Switch>
   </Router>

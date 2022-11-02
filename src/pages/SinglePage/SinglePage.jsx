@@ -6,7 +6,6 @@ import { useIntl } from 'react-intl';
 import cn from 'classnames';
 
 import { requestTodo } from 'services';
-import { Navbar } from 'components/Navbar';
 import { Routes } from 'routes/constants';
 
 import './index.scss';
@@ -108,53 +107,50 @@ export const SinglePage = () => {
   });
 
   return (
-    <>
-      <Navbar />
-      <main className="single-page">
-        <div className="single-page__buttons">
-          <button
-            type="button"
-            className="single-page__buttons__done"
-            disabled={isLoading}
-            onClick={handlerOnChecked}
-          >
-            {formatMessage({ id: 'singlePage_button_done' })}
-          </button>
-          <button
-            type="button"
-            className="single-page__buttons__delete"
-            disabled={isLoading}
-            onClick={handlerOnDelete}
-          >
-            {formatMessage({ id: 'singlePage_button_delete' })}
-          </button>
-          <button
-            type="button"
-            className="single-page__buttons__go-back"
-            disabled={isLoading}
-            onClick={history.goBack}
-          >
-            {formatMessage({ id: 'singlePage_button_goBack' })}
-          </button>
-        </div>
+    <main className="single-page">
+      <div className="single-page__buttons">
+        <button
+          type="button"
+          className="single-page__buttons__done"
+          disabled={isLoading}
+          onClick={handlerOnChecked}
+        >
+          {formatMessage({ id: 'singlePage_button_done' })}
+        </button>
+        <button
+          type="button"
+          className="single-page__buttons__delete"
+          disabled={isLoading}
+          onClick={handlerOnDelete}
+        >
+          {formatMessage({ id: 'singlePage_button_delete' })}
+        </button>
+        <button
+          type="button"
+          className="single-page__buttons__go-back"
+          disabled={isLoading}
+          onClick={history.goBack}
+        >
+          {formatMessage({ id: 'singlePage_button_goBack' })}
+        </button>
+      </div>
 
-        <div className="single-page__field">
-          <DebounceInput
-            element="textarea"
-            className={textareaClassName}
-            debounceTimeout={300}
-            value={title}
-            disabled={isLoading}
-            onChange={(event) => {
-              setTitle(event.target.value);
+      <div className="single-page__field">
+        <DebounceInput
+          element="textarea"
+          className={textareaClassName}
+          debounceTimeout={300}
+          value={title}
+          disabled={isLoading}
+          onChange={(event) => {
+            setTitle(event.target.value);
 
-              if (!event.target.value) {
-                handlerOnDelete();
-              }
-            }}
-          />
-        </div>
-      </main>
-    </>
+            if (!event.target.value) {
+              handlerOnDelete();
+            }
+          }}
+        />
+      </div>
+    </main>
   );
 };
