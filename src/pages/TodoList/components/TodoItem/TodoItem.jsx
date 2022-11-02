@@ -32,6 +32,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
       });
 
       getTodoListItems();
+
+      toast.success(formatMessage({ id: 'toast_success_delete' }));
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
@@ -49,6 +51,10 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
       });
 
       getTodoListItems();
+
+      if (!isDone) {
+        toast.success(formatMessage({ id: 'toast_success_isDone' }));
+      }
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
@@ -66,6 +72,8 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
       });
 
       getTodoListItems();
+
+      toast.success(formatMessage({ id: 'toast_success_edit' }));
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {

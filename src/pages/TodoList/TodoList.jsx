@@ -45,6 +45,8 @@ export const TodoList = () => {
 
       if (data.message === 'Ok') {
         getTodoListItems();
+
+        toast.success(formatMessage({ id: 'toast_success_addTodo' }));
       }
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));

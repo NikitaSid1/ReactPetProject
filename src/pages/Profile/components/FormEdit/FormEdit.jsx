@@ -27,6 +27,8 @@ export const FormEdit = () => {
       });
 
       redirect();
+
+      toast.success(formatMessage({ id: 'toast_success_edit' }));
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {

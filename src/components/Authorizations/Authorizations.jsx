@@ -21,6 +21,7 @@ export const Authorizations = ({
   pageBackgroundImg,
   switchPageBtnRoute,
   formClassName,
+  toastSuccessfulAuthorizationMessage,
 }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const history = useHistory();
@@ -39,6 +40,8 @@ export const Authorizations = ({
       localStorage.setItem('myJWT', data.entity);
 
       history.push(Routes.Profile);
+
+      toast.success(toastSuccessfulAuthorizationMessage);
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
@@ -96,4 +99,5 @@ Authorizations.propTypes = {
   pageBackgroundImg: PropTypes.string.isRequired,
   switchPageBtnRoute: PropTypes.string.isRequired,
   formClassName: PropTypes.string.isRequired,
+  toastSuccessfulAuthorizationMessage: PropTypes.string.isRequired,
 };

@@ -11,11 +11,12 @@ export const Login = () => {
   return (
     <Authorizations
       requestUrl="/login"
-      pageNameLabel={formatMessage({ id: 'authorization_login' })}
-      switchPageBtnLabel={formatMessage({ id: 'authorization_signup' })}
       pageBackgroundImg={loginImg}
       switchPageBtnRoute={Routes.Registration}
       formClassName="authorisation__form"
+      pageNameLabel={formatMessage({ id: 'authorization_login' })}
+      switchPageBtnLabel={formatMessage({ id: 'authorization_signup' })}
+      toastSuccessfulAuthorizationMessage={formatMessage({ id: 'toast_success_login' })}
     />
   );
 };

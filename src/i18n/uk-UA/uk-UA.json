@@ -1,0 +1,33 @@
+{
+  "authorization_login": "Авторизуватися",
+  "authorization_signup": "Зареєструватися",
+  "authorization_email": "Електронна пошта",
+  "authorization_password": "Пароль",
+
+  "profile_title": "Профіль",
+  "profile_email": "Електронна пошта",
+  "profile_firstName": "Ім'я",
+  "profile_lastName": "Прізвище",
+  "profile_button_edit": "Змінити",
+  "profile_button_save": "Зберегти",
+  "profile_button_cancel": "Вийти",
+
+  "navbar_link_profile": "Профіль",
+  "navbar_link_todo": "Cписок завдань",
+  "navbar_button_logout": "Вихід",
+
+  "singlePage_button_done": "Зроблено",
+  "singlePage_button_delete": "Видалити",
+  "singlePage_button_goBack": "Повернутися",
+
+  "todoList_input": "Нове завдання",
+  "todoList_button": "Додати завдання",
+
+  "toast_error": "Щось пішло не так 😢 \nБудь ласка, спробуйте ще раз",
+  "toast_success_login": "Ви успішно увійшли",
+  "toast_success_signup": "Ви успішно реєструвалися",
+  "toast_success_edit": "Зміни успішно збережені",
+  "toast_success_delete": "Завдання успішно видалено",
+  "toast_success_isDone": "Завдання успішно виконано",
+  "toast_success_addTodo": "Завдання успішно додано"
+}

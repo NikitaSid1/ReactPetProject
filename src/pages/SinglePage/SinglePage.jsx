@@ -49,6 +49,8 @@ export const SinglePage = () => {
       });
 
       history.push(Routes.TodoList);
+
+      toast.success(formatMessage({ id: 'toast_success_delete' }));
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
@@ -65,6 +67,10 @@ export const SinglePage = () => {
         data: { todoId: id, isDone: !isDone },
       });
       setIsDone(!isDone);
+
+      if (!isDone) {
+        toast.success(formatMessage({ id: 'toast_success_isDone' }));
+      }
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
     } finally {
