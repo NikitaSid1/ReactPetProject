@@ -28,7 +28,12 @@ export const Navbar = () => {
       >
         {formatMessage({ id: 'navbar_link_profile' })}
       </NavLink>
-      <NavLink exact to={Routes.TodoList} className="navbar__link" activeClassName="active">
+      <NavLink
+        exact
+        to={Routes.TodoList}
+        className="navbar__link  navbar__todo-link"
+        activeClassName="active"
+      >
         {formatMessage({ id: 'navbar_link_todo' })}
       </NavLink>
 

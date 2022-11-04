@@ -1,21 +1,34 @@
 .navbar {
   position: relative;
   height: 2.5rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: #50454e;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
 
+  .active {
+    border-bottom: solid 0.12rem #766773;
+    background-color: #453943;
+    border-radius: 2.5rem;
+    padding: 0 0.5rem;
+  }
+
   &__link {
     font-size: 1.25rem;
+    display: inline;
     color: #feede1;
     margin: 0 1.25rem;
+    padding: 0 0.5rem;
     font-weight: 500;
   }
 
   &__profile-link {
     justify-self: end;
+  }
+
+  &__todo-link {
+    justify-self: flex-start;
   }
 
   &__logout {

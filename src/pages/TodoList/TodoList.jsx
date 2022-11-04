@@ -87,6 +87,7 @@ export const TodoList = () => {
               getTodoListItems={getTodoListItems}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+              dateCreated={el.dateCreated}
             />
           ))}
       </ul>

@@ -14,13 +14,21 @@ import nextPageImg from './assets/nextPage.svg';
 
 import './index.scss';
 
-export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsLoading }) => {
+export const TodoItem = ({
+  text,
+  id,
+  isDone,
+  getTodoListItems,
+  isLoading,
+  setIsLoading,
+  dateCreated,
+}) => {
   const [disabled, setDisabled] = React.useState(true);
   const [name, setName] = React.useState(text);
 
   const history = useHistory();
 
-  const { formatMessage } = useIntl();
+  const { formatMessage, formatDate } = useIntl();
 
   const handlerOnDelete = async () => {
     setIsLoading(true);
@@ -96,8 +104,13 @@ export const TodoItem = ({ text, id, isDone, getTodoListItems, isLoading, setIsL
     'field_decoration-line': isDone,
   });
 
+  const itemDateCreated = Date.parse(dateCreated);
+
   return (
-    <li className="todo-element">
+    <li
+      data-title={`${formatMessage({ id: 'dateCreated' })} ${formatDate(itemDateCreated)}`}
+      className="todo-element"
+    >
       <input
         className={inputClassName}
         type="text"
