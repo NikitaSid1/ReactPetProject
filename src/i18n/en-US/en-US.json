@@ -29,5 +29,7 @@
   "toast_success_edit": "The changes were successfully saved",
   "toast_success_delete": "The task was successfully deleted",
   "toast_success_isDone": "Task completed successfully",
-  "toast_success_addTodo": "Task added successfully"
+  "toast_success_addTodo": "Task added successfully",
+
+  "dateCreated": "Was created in"
 }

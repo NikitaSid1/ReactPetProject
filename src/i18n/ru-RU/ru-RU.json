@@ -29,5 +29,7 @@
   "toast_success_edit": "Изменения успешно сохранены",
   "toast_success_delete": "Задача успешно удалена",
   "toast_success_isDone": "Задача успешно выполнена",
-  "toast_success_addTodo": "Задача успешно добавлена"
+  "toast_success_addTodo": "Задача успешно добавлена",
+
+  "dateCreated": "Создан в"
 }
