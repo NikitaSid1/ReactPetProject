@@ -26,6 +26,13 @@ $ git clone https://github.com/NikitaSid1/ReactPetProject.git
 
 ## `Usage`
 
+
+### `Installation`
+
+```sh
+$ npm i
+```
+
 ### `Serving the app`
 
 ```sh
