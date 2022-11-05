@@ -32,12 +32,6 @@ $ git clone https://github.com/NikitaSid1/ReactPetProject.git
 $ npm start
 ```
 
-### `Running the tests`
-
-```sh
-$ npm test
-```
-
 ### `Building a distribution version`
 
 ```sh
