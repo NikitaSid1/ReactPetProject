@@ -7,6 +7,7 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
+    'jest/globals': true,
   },
 
   rules: {
@@ -38,7 +39,7 @@ module.exports = {
     'import/no-unresolved': RULE_OFF,
   },
 
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:jest/recommended'],
 
   overrides: [],
 
@@ -47,5 +48,5 @@ module.exports = {
     sourceType: 'module',
   },
 
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
 };

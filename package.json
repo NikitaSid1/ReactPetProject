@@ -21,10 +21,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test jest",
     "eject": "react-scripts eject",
     "lint:es": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint:es:fix": "npm run lint:es -- --fix"
+    "lint:es:fix": "npm run lint:es -- --fix",
+    "coverage": "jest --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -48,18 +49,20 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.5",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.7.1"
+    "jest": "27.5.1",
+    "jest-environment-jsdom": "27.5.1",
+    "jest-mock-axios": "4.5.0",
+    "prettier": "^2.7.1",
+    "react-test-renderer": "^18.2.0"
   }
 }
