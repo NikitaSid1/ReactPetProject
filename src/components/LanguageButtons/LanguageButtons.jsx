@@ -1,8 +1,9 @@
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import { useLanguageProvider } from 'services';
-import { LOCALES } from 'i18n/locales';
+import { switchLanguageLabels, LOCALES } from 'translations';
 
 import './index.scss';
 
@@ -10,9 +11,9 @@ export const LanguageButtons = ({ buttonsPositionNavbar, buttonsPositionAuthoriz
   const { setLanguageLocale } = useLanguageProvider();
 
   const languages = [
-    { name: 'English', code: LOCALES.ENGLISH },
-    { name: 'Українська', code: LOCALES.UKRAINIAN },
-    { name: 'Русский', code: LOCALES.RUSSIAN },
+    { name: switchLanguageLabels.ENGLISH_LANGUAGE, code: LOCALES.ENGLISH },
+    { name: switchLanguageLabels.UKRAINIAN_LANGUAGE, code: LOCALES.UKRAINIAN },
+    { name: switchLanguageLabels.RUSSIAN_LANGUAGE, code: LOCALES.RUSSIAN },
   ];
 
   const sectionPositionClassName = cn('language__section', {
