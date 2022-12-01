@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useField } from 'formik';
-// import { useIntl } from 'react-intl';
 
 export const InputField = ({ ...props }) => {
   const [field, meta] = useField(props);
