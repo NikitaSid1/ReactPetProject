@@ -3,6 +3,11 @@
   "authorization_signup": "Зарегистрироваться",
   "authorization_email": "Електронный адрес",
   "authorization_password": "Пароль",
+  "authorization_email_error": "Электронная почта является обязательным полем",
+  "authorization_password_error": "Пароль является обязательным полем",
+  "authorization_email_is_invalid": "Электронная почта недействительна",
+  "authorization_password_less_five_char": "Должно быть не менее 5 символов",
+  "authorization_password_more_twenty_char": "Должно быть меньше 20 символов",
 
   "profile_title": "Профиль",
   "profile_email": "Електронный адрес",

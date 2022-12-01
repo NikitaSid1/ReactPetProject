@@ -3,6 +3,11 @@
   "authorization_signup": "Зареєструватися",
   "authorization_email": "Електронна пошта",
   "authorization_password": "Пароль",
+  "authorization_email_error": "Поле електронної пошти є обов’язковим",
+  "authorization_password_error": "Пароль є обов'язковим полем",
+  "authorization_email_is_invalid": "Електронна адреса недійсна",
+  "authorization_password_less_five_char": "Має бути не менше 5 символів",
+  "authorization_password_more_twenty_char": "Має бути менше 20 символів",
 
   "profile_title": "Профіль",
   "profile_email": "Електронна пошта",

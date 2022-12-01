@@ -7,9 +7,11 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
+    'jest/globals': true,
   },
 
   rules: {
+    'import/no-extraneous-dependencies': RULE_OFF,
     'linebreak-style': RULE_OFF,
     'object-curly-newline': RULE_OFF,
     'no-param-reassign': RULE_OFF,
@@ -38,14 +40,17 @@ module.exports = {
     'import/no-unresolved': RULE_OFF,
   },
 
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:jest/recommended', 'prettier'],
 
   overrides: [],
 
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
 
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
 };
