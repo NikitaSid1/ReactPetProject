@@ -3,7 +3,7 @@ import { renderWithRouter } from 'test';
 import { screen } from '@testing-library/react';
 
 import { Routes } from 'routes/constants';
-import enLanguage from 'translations/en-US/en-US.json';
+import { enLanguage } from 'translations';
 
 import { Layout } from './Layout';
 
@@ -42,8 +42,6 @@ describe('Layout', () => {
   test('should show navbar', () => {
     render(MOCK_URL);
 
-    expect(
-      screen.getByRole('button', { name: enLanguage.navbar_button_logout }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: enLanguage.navbar_button_logout })).toBeVisible();
   });
 });

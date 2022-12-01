@@ -10,7 +10,7 @@ import { Routes } from 'routes/constants';
 import { LanguageButtons } from 'components/LanguageButtons';
 import { initialValues } from './constants';
 import { InputField } from './components';
-import { LoginSchema } from './utils';
+import { createValidationSchema } from './utils';
 
 import './index.scss';
 
@@ -55,7 +55,7 @@ export const Authorizations = ({
     <div className="authorisation">
       <Formik
         initialValues={initialValues}
-        validationSchema={LoginSchema}
+        validationSchema={createValidationSchema(formatMessage)}
         onSubmit={handlerOnSubmit}
       >
         <Form className={formClassName}>

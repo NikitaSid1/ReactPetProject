@@ -9,10 +9,6 @@ import { Navbar } from './Navbar';
 
 const render = (route = '/') => renderWithRouter(<Navbar />, { route });
 
-const setLocalStorage = (id, data) => {
-  localStorage.setItem(id, data);
-};
-
 const mockPush = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -29,17 +25,14 @@ describe('Navbar', () => {
   });
 
   test('should logout when user click on logout button', async () => {
-    const mockId = 'myJWT';
-    const mockData = 'JwtIsTrue';
-
-    setLocalStorage(mockId, mockData);
+    localStorage.setItem('myJWT', 'JwtIsTrue');
     render();
 
     userEvent.click(screen.getByRole('button', { name: enLanguage.navbar_button_logout }));
 
     await waitFor(() => expect(mockPush).toHaveBeenCalledWith(Routes.Index));
 
-    expect(localStorage.getItem(mockId)).toBeUndefined();
+    expect(localStorage.getItem('myJWT')).toBeUndefined();
   });
 
   test('should follow when user click on profile button', async () => {

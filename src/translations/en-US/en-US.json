@@ -3,6 +3,11 @@
   "authorization_signup": "Sign Up",
   "authorization_email": "Email",
   "authorization_password": "Password",
+  "authorization_email_error": "Email is a required field",
+  "authorization_password_error": "Password is a required field",
+  "authorization_email_is_invalid": "Email is invalid",
+  "authorization_password_less_five_char": "Must be at least 5 characters",
+  "authorization_password_more_twenty_char": "Must be less than 20 characters",
 
   "profile_title": "Profile",
   "profile_email": "Email",

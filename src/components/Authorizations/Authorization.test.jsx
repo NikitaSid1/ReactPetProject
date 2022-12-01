@@ -4,11 +4,12 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Routes } from 'routes/constants';
+import { enLanguage } from 'translations';
 import { Authorizations } from './Authorizations';
 
 const PAGE_NAME_LABEL = 'authorization_login';
-const EMAIL_IS_REQUIRED = 'email is a required field';
-const PASSWORD_IS_REQUIRED = 'password is a required field';
+const LOGIN_AUTHORIZATION = 'second@gmail.com';
+const PASSWORD_AUTHORIZATION = '123ds2r1dwasd';
 
 const render = (route = '/') =>
   renderWithRouter(
@@ -34,8 +35,8 @@ describe('Authorizations', () => {
   test('should display all labels', () => {
     render();
 
-    expect(screen.getByLabelText('Email')).toBeVisible();
-    expect(screen.getByLabelText('Password')).toBeVisible();
+    expect(screen.getByLabelText(enLanguage.authorization_email)).toBeVisible();
+    expect(screen.getByLabelText(enLanguage.authorization_password)).toBeVisible();
   });
 
   test('should show email and password errors', async () => {
@@ -43,43 +44,67 @@ describe('Authorizations', () => {
 
     userEvent.click(screen.getByRole('button', { name: PAGE_NAME_LABEL }));
 
-    await waitFor(() => expect(screen.getByText(EMAIL_IS_REQUIRED)).toBeVisible());
-    await waitFor(() => expect(screen.getByText(PASSWORD_IS_REQUIRED)).toBeVisible());
+    await waitFor(() =>
+      expect(screen.getByText(enLanguage.authorization_email_error)).toBeVisible(),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByText(enLanguage.authorization_password_error)).toBeVisible(),
+    );
   });
 
   test('should find filled email and password fields', async () => {
     render();
 
-    userEvent.type(screen.getByLabelText('Email'), 'second@gmail.com');
+    userEvent.type(screen.getByLabelText(enLanguage.authorization_email), LOGIN_AUTHORIZATION);
 
-    await waitFor(() => expect(screen.getByDisplayValue('second@gmail.com')).toBeVisible());
+    await waitFor(() => expect(screen.getByDisplayValue(LOGIN_AUTHORIZATION)).toBeVisible());
 
-    userEvent.type(screen.getByLabelText('Password'), '123ds2r1dwasd');
+    userEvent.type(
+      screen.getByLabelText(enLanguage.authorization_password),
+      PASSWORD_AUTHORIZATION,
+    );
 
-    await waitFor(() => expect(screen.getByDisplayValue('123ds2r1dwasd')).toBeVisible());
+    await waitFor(() => expect(screen.getByDisplayValue(PASSWORD_AUTHORIZATION)).toBeVisible());
   });
 
   test('should find filled email field and password error', async () => {
     render();
 
-    userEvent.type(screen.getByLabelText('Email'), 'second@gmail.com');
+    userEvent.type(screen.getByLabelText(enLanguage.authorization_email), LOGIN_AUTHORIZATION);
 
-    await waitFor(() => expect(screen.getByDisplayValue('second@gmail.com')).toBeVisible());
+    await waitFor(() => expect(screen.getByDisplayValue(LOGIN_AUTHORIZATION)).toBeVisible());
 
     userEvent.click(screen.getByRole('button', { name: PAGE_NAME_LABEL }));
 
-    await waitFor(() => expect(screen.getByText(PASSWORD_IS_REQUIRED)).toBeVisible());
+    await waitFor(() =>
+      expect(screen.getByText(enLanguage.authorization_password_error)).toBeVisible(),
+    );
   });
 
   test('should find filled password field and email error', async () => {
     render();
 
-    userEvent.type(screen.getByLabelText('Password'), '123ds2r1dwasd');
+    userEvent.type(
+      screen.getByLabelText(enLanguage.authorization_password),
+      PASSWORD_AUTHORIZATION,
+    );
 
-    await waitFor(() => expect(screen.getByDisplayValue('123ds2r1dwasd')).toBeVisible());
+    await waitFor(() => expect(screen.getByDisplayValue(PASSWORD_AUTHORIZATION)).toBeVisible());
 
     userEvent.click(screen.getByRole('button', { name: PAGE_NAME_LABEL }));
 
-    await waitFor(() => expect(screen.getByText(EMAIL_IS_REQUIRED)).toBeVisible());
+    await waitFor(() =>
+      expect(screen.getByText(enLanguage.authorization_email_error)).toBeVisible(),
+    );
+  });
+
+  test('should be type of input password', () => {
+    render();
+
+    expect(screen.getByLabelText(enLanguage.authorization_password)).toHaveAttribute(
+      'type',
+      'password',
+    );
   });
 });
