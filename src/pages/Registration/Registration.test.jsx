@@ -9,8 +9,9 @@ import { Registration } from './Registration';
 
 const LOGIN_EMAIL = 'second@gmail.com';
 const LOGIN_PASSWORD = '123ds2r1dwasd';
+const signupIpUrl = '/signup';
 
-const render = (route = '/') => renderWithRouter(<Registration />, { route });
+const render = () => renderWithRouter(<Registration />);
 
 describe('Registration', () => {
   test('should render component', () => {
@@ -39,7 +40,7 @@ describe('Registration', () => {
     await waitFor(() =>
       expect(mockAxios).toHaveBeenCalledWith(
         expect.objectContaining({
-          url: '/signup',
+          url: signupIpUrl,
           data: { email: LOGIN_EMAIL, password: LOGIN_PASSWORD },
         }),
       ),
