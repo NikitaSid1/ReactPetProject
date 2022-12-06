@@ -22,7 +22,7 @@ export const FormEdit = () => {
     try {
       await requestTodo({
         url: '/user/profile',
-        method: 'put',
+        method: 'PUT',
         data: { firstName: firstNameProfile, lastName: lastNameProfile },
       });
 

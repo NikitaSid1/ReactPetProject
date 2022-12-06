@@ -5,7 +5,7 @@ export const createApiInstance = (baseURL) => {
     baseURL,
   });
 
-  const request = async ({ url, method = 'get', data = null, headers = {} }) => {
+  const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
     let initialHeaders = {
       'Content-Type': 'application/json',
     };

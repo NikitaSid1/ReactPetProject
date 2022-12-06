@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 

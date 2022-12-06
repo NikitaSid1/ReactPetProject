@@ -37,7 +37,7 @@ export const TodoList = () => {
     try {
       const { data } = await requestTodo({
         url: '/user/todo-list',
-        method: 'post',
+        method: 'POST',
         data: { title: values.todoText },
       });
       setTodoText(values.todoText);

@@ -35,7 +35,7 @@ export const TodoItem = ({
     try {
       await requestTodo({
         url: '/user/todo-list',
-        method: 'delete',
+        method: 'DELETE',
         data: { todoId: id },
       });
 
@@ -54,7 +54,7 @@ export const TodoItem = ({
     try {
       await requestTodo({
         url: '/user/todo-list/edit-is-done',
-        method: 'put',
+        method: 'PUT',
         data: { todoId: id, isDone: !isDone },
       });
 
@@ -75,7 +75,7 @@ export const TodoItem = ({
     try {
       await requestTodo({
         url: '/user/todo-list/edit-title',
-        method: 'post',
+        method: 'POST',
         data: { todoId, title: name },
       });
 
