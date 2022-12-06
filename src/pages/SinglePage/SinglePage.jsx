@@ -43,7 +43,7 @@ export const SinglePage = () => {
     try {
       await requestTodo({
         url: '/user/todo-list',
-        method: 'delete',
+        method: 'DELETE',
         data: { todoId: id },
       });
 
@@ -62,7 +62,7 @@ export const SinglePage = () => {
     try {
       await requestTodo({
         url: '/user/todo-list/edit-is-done',
-        method: 'put',
+        method: 'PUT',
         data: { todoId: id, isDone: !isDone },
       });
       setIsDone(!isDone);
@@ -82,7 +82,7 @@ export const SinglePage = () => {
     try {
       await requestTodo({
         url: '/user/todo-list/edit-title',
-        method: 'post',
+        method: 'POST',
         data: { todoId: id, title },
       });
     } catch (e) {

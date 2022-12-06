@@ -33,7 +33,7 @@ export const Authorizations = ({
     try {
       const { data } = await requestTodo({
         url: requestUrl,
-        method: 'post',
+        method: 'POST',
         data: { email, password },
       });
 
