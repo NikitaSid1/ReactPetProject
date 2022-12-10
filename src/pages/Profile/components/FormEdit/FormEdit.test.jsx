@@ -37,7 +37,7 @@ const response = {
 };
 
 const mockResponse = {
-  url: '/user/profile',
+  url: PROFILE_API_URL,
   method: 'PUT',
   data: { firstName: NEW_FIRST_NAME_VALUE, lastName: NEW_LAST_NAME_VALUE },
 };
@@ -52,7 +52,7 @@ describe('FormEdit', () => {
   test('should show skeleton and input values', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     expect(screen.getByTestId('skeleton')).toBeVisible();
 
@@ -64,7 +64,7 @@ describe('FormEdit', () => {
   test('should show save and cancel buttons', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => expect(screen.getByText(enLanguage.profile_button_save)).toBeVisible());
     await waitFor(() => expect(screen.getByText(enLanguage.profile_button_cancel)).toBeVisible());
@@ -73,7 +73,7 @@ describe('FormEdit', () => {
   test('should fill firstName, lastName inputs and return response', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => userEvent.clear(screen.getByLabelText(enLanguage.profile_firstName)));
     await waitFor(() =>
@@ -106,7 +106,7 @@ describe('FormEdit', () => {
   test('should redirects when user click on cancel button', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => userEvent.click(screen.getByText(enLanguage.profile_button_cancel)));
 
@@ -116,11 +116,11 @@ describe('FormEdit', () => {
   test('should redirects when user click on save button', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => userEvent.click(screen.getByText(enLanguage.profile_button_save)));
 
-    axios.mockResponseFor({ url: '/user/profile' }, mockResponse);
+    axios.mockResponseFor({ url: PROFILE_API_URL }, mockResponse);
 
     await waitFor(() => expect(mockPush).toHaveBeenCalledWith(Routes.Profile));
   });
