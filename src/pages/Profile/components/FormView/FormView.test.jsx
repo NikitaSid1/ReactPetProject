@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axios from 'axios';
+import mockAxios from 'jest-mock-axios';
 import { renderWithRouter } from 'test';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -18,6 +18,8 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
+const PROFILE_API_URL = '/user/profile';
+
 const EMAIL_VALUE = 'Email@mail.com';
 const FIRST_NAME_VALUE = 'Mock First Name user';
 const LAST_NAME_VALUE = 'Mock Last Name user';
@@ -27,7 +29,7 @@ const response = {
     entity: { email: EMAIL_VALUE, firstName: FIRST_NAME_VALUE, lastName: LAST_NAME_VALUE },
   },
   method: 'GET',
-  url: '/user/profile',
+  url: PROFILE_API_URL,
 };
 
 describe('FormView', () => {
@@ -40,7 +42,7 @@ describe('FormView', () => {
   test('should show skeleton and input values', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     expect(screen.getByTestId('skeleton')).toBeVisible();
 
@@ -52,7 +54,7 @@ describe('FormView', () => {
   test('should show edit button', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => expect(screen.getByText(enLanguage.profile_button_edit)).toBeVisible());
   });
@@ -60,7 +62,7 @@ describe('FormView', () => {
   test('should redirects when user click on edit button', async () => {
     render();
 
-    axios.mockResponseFor({ url: '/user/profile' }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => userEvent.click(screen.getByText(enLanguage.profile_button_edit)));
 

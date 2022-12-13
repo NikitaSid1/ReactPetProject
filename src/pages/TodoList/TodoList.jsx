@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useIntl } from 'react-intl';
 
 import { requestTodo } from 'services';
-import { TodoItem } from './components/TodoItem';
+import { TodoItem, TodoSkeleton, TodoMessage } from './components';
 
 import './index.scss';
 
@@ -12,6 +12,8 @@ export const TodoList = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [todoItems, setTodoItems] = React.useState(null);
   const [todoText, setTodoText] = React.useState('');
+  const [todoEmptyMessage, setTodoEmptyMessage] = React.useState(false);
+  const [todoErrorMessage, setTodoErrorMessage] = React.useState(false);
 
   const { formatMessage } = useIntl();
 
@@ -21,9 +23,19 @@ export const TodoList = () => {
       const { data } = await requestTodo({
         url: '/user/todo-list',
       });
+
+      setTodoErrorMessage(false);
+
       setTodoItems(data.entity);
+
+      if (data.entity.length < 1) {
+        setTodoEmptyMessage(true);
+      } else {
+        setTodoEmptyMessage(false);
+      }
     } catch (e) {
-      toast.error(formatMessage({ id: 'toast_error' }));
+      setTodoEmptyMessage(false);
+      setTodoErrorMessage(true);
     } finally {
       setIsLoading(false);
     }
@@ -34,6 +46,8 @@ export const TodoList = () => {
   }, []);
 
   const handlerOnSubmit = async (values, { resetForm }) => {
+    console.log({ values });
+
     try {
       const { data } = await requestTodo({
         url: '/user/todo-list',
@@ -42,6 +56,8 @@ export const TodoList = () => {
       });
       setTodoText(values.todoText);
 
+      console.log({ data });
+
       if (data.message === 'Ok') {
         getTodoListItems();
 
@@ -49,6 +65,9 @@ export const TodoList = () => {
       }
     } catch (e) {
       toast.error(formatMessage({ id: 'toast_error' }));
+
+      setTodoEmptyMessage(false);
+      setTodoErrorMessage(true);
     }
 
     resetForm({ values: '' });
@@ -63,6 +82,7 @@ export const TodoList = () => {
       <Formik initialValues={initialValues} onSubmit={handlerOnSubmit}>
         <Form className="todo-form">
           <Field
+            data-testid="todoList-input"
             autoFocus
             className="todo-form__input"
             name="todoText"
@@ -90,6 +110,22 @@ export const TodoList = () => {
               dateCreated={el.dateCreated}
             />
           ))}
+
+        {todoErrorMessage && (
+          <TodoMessage
+            messageClassName="todo-form__error-message"
+            messageName={formatMessage({ id: 'todoList_errorMessage' })}
+          />
+        )}
+
+        {!todoItems && !todoErrorMessage && <TodoSkeleton />}
+
+        {todoEmptyMessage && (
+          <TodoMessage
+            messageClassName="todo-form__empty-message"
+            messageName={formatMessage({ id: 'todoList_emptyMessage' })}
+          />
+        )}
       </ul>
     </section>
   );

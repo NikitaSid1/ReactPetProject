@@ -50,4 +50,23 @@
   &__ul {
     padding: 0;
   }
+
+  &__skeleton {
+    width: 53.125rem;
+    height: 3.125rem;
+    margin-top: 1.6rem;
+    border-radius: 0.312rem;
+  }
+
+  &__error-message,
+  &__empty-message {
+    width: 28.6rem;
+    color: #50454e;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  &__error-message {
+    color: #f25551;
+  }
 }
