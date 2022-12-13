@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 
+import mockAxios from 'jest-mock-axios';
+
 const localStorageMock = (() => {
   let store = {};
 
@@ -28,3 +30,8 @@ const localStorageMock = (() => {
 })();
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  mockAxios.reset();
+});

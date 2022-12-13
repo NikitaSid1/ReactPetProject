@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axios from 'axios';
+import mockAxios from 'jest-mock-axios';
 import { renderWithRouter } from 'test';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -42,7 +42,7 @@ describe('FormView', () => {
   test('should show skeleton and input values', async () => {
     render();
 
-    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     expect(screen.getByTestId('skeleton')).toBeVisible();
 
@@ -54,7 +54,7 @@ describe('FormView', () => {
   test('should show edit button', async () => {
     render();
 
-    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => expect(screen.getByText(enLanguage.profile_button_edit)).toBeVisible());
   });
@@ -62,7 +62,7 @@ describe('FormView', () => {
   test('should redirects when user click on edit button', async () => {
     render();
 
-    axios.mockResponseFor({ url: PROFILE_API_URL }, response);
+    mockAxios.mockResponseFor({ url: PROFILE_API_URL }, response);
 
     await waitFor(() => userEvent.click(screen.getByText(enLanguage.profile_button_edit)));
 

@@ -8,7 +8,6 @@ import { useIntl } from 'react-intl';
 import { requestTodo } from 'services';
 import { Routes } from 'routes/constants';
 
-import editButtonImg from './assets/editButton.svg';
 import deleteButtonImg from './assets/deleteButton.svg';
 import nextPageImg from './assets/nextPage.svg';
 
@@ -23,7 +22,6 @@ export const TodoItem = ({
   setIsLoading,
   dateCreated,
 }) => {
-  const [disabled, setDisabled] = React.useState(true);
   const [name, setName] = React.useState(text);
 
   const history = useHistory();
@@ -70,32 +68,6 @@ export const TodoItem = ({
     }
   };
 
-  const onEdit = async (todoId) => {
-    setIsLoading(true);
-    try {
-      await requestTodo({
-        url: '/user/todo-list/edit-title',
-        method: 'POST',
-        data: { todoId, title: name },
-      });
-
-      getTodoListItems();
-
-      toast.success(formatMessage({ id: 'toast_success_edit' }));
-    } catch (e) {
-      toast.error(formatMessage({ id: 'toast_error' }));
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handlerOnEdit = () => {
-    setDisabled(!disabled);
-    if (!disabled) {
-      onEdit(id);
-    }
-  };
-
   const handleFollowNextPage = () => {
     history.push(Routes.getSinglePage(id));
   };
@@ -114,20 +86,11 @@ export const TodoItem = ({
       <input
         className={inputClassName}
         type="text"
-        disabled={disabled}
+        disabled
         name="todoElement"
         value={name}
         onChange={(event) => setName(event.target.value)}
       />
-      <button
-        type="button"
-        className="todo-element__edit"
-        name="todoElement"
-        onClick={handlerOnEdit}
-        disabled={isLoading}
-      >
-        <img src={editButtonImg} alt="editButton" />
-      </button>
 
       <button
         type="button"

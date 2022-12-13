@@ -1,5 +1,4 @@
 import * as React from 'react';
-import axios from 'axios';
 import { renderWithRouter } from 'test';
 import { screen, waitFor } from '@testing-library/react';
 import mockAxios from 'jest-mock-axios';
@@ -80,7 +79,7 @@ describe('Login', () => {
       userEvent.click(screen.getByRole('button', { name: enLanguage.authorization_login })),
     );
 
-    axios.mockResponseFor({ url: LOGIN_API_URL }, RESPONSE_JWT_KEY);
+    mockAxios.mockResponseFor({ url: LOGIN_API_URL }, RESPONSE_JWT_KEY);
 
     await waitFor(() => expect(mockPush).toHaveBeenCalledWith(Routes.Profile));
   });

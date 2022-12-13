@@ -27,6 +27,8 @@
 
   "todoList_input": "New todo",
   "todoList_button": "Add todo",
+  "todoList_errorMessage": "Something Went Wrong, Please Try Again Later",
+  "todoList_emptyMessage": "You have no todo items yet! Add one above!",
 
   "toast_error": "Something Went Wrong 😢 \nPlease Try Again",
   "toast_success_login": "You have successfully logged in",
